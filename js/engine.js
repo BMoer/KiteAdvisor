@@ -1,7 +1,7 @@
 /**
  * Kite Size Optimizer Engine
  * Wind data modeling (Weibull distributions) and kite size optimization algorithm.
- * Branded for LakeUnited (www.lakeunited.com)
+ * Branded for Moerzinger.eu (www.moerzinger.eu)
  */
 
 // ============================================================

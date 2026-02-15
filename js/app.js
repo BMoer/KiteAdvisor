@@ -1,6 +1,6 @@
 /**
  * Kite Size Optimizer — UI Controller & Charts
- * Branded for LakeUnited (www.lakeunited.com)
+ * Branded for Moerzinger.eu (www.moerzinger.eu)
  */
 
 let windChart = null;
