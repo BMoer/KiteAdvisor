@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kite Size Optimizer | LakeUnited</title>
+    <meta name="description" content="Finde die optimalen Kite-Gr&ouml;&szlig;en f&uuml;r deinen Homespot. Maximiere deine fahrbaren Windtage basierend auf historischen Wetterdaten.">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="header">
+    <div class="header-inner">
+        <div class="header-brand">
+            <span>&#9883;</span>
+            <a href="https://www.lakeunited.com" target="_blank" rel="noopener">LakeUnited.com</a>
+        </div>
+        <h1>Kite Size Optimizer</h1>
+        <p>Finde die optimalen Kite-Gr&ouml;&szlig;en f&uuml;r deinen Homespot &ndash; maximiere deine fahrbaren Windtage.</p>
+    </div>
+</header>
+
+<!-- ============ MAIN ============ -->
+<main class="main">
+
+    <!-- Input Card -->
+    <section class="card">
+        <div class="card-title">
+            <span>&#9881;</span> Deine Daten
+        </div>
+
+        <div class="form-grid">
+
+            <!-- Weight -->
+            <div class="form-group">
+                <label for="weight-slider">K&ouml;rpergewicht</label>
+                <div class="slider-container">
+                    <input type="range" id="weight-slider" min="40" max="130" value="80" step="1">
+                    <span class="slider-value" id="weight-display">80 kg</span>
+                </div>
+            </div>
+
+            <!-- Height -->
+            <div class="form-group">
+                <label for="height-slider">K&ouml;rpergr&ouml;&szlig;e</label>
+                <div class="slider-container">
+                    <input type="range" id="height-slider" min="140" max="210" value="175" step="1">
+                    <span class="slider-value" id="height-display">175 cm</span>
+                </div>
+            </div>
+
+            <!-- Skill Level -->
+            <div class="form-group">
+                <label for="skill-select">Fahrkönnen</label>
+                <select id="skill-select">
+                    <option value="beginner">Anf&auml;nger</option>
+                    <option value="intermediate" selected>Fortgeschritten</option>
+                    <option value="advanced">K&ouml;nner</option>
+                    <option value="expert">Experte / Pro</option>
+                </select>
+            </div>
+
+            <!-- Riding Style -->
+            <div class="form-group">
+                <label for="style-select">Riding Style</label>
+                <select id="style-select">
+                    <option value="freeride">Freeride</option>
+                    <option value="freestyle">Freestyle</option>
+                    <option value="bigair">Big Air</option>
+                </select>
+            </div>
+
+            <!-- Spot -->
+            <div class="form-group full-width">
+                <label for="spot-select">Homespot</label>
+                <select id="spot-select">
+                    <option value="podersdorf">Podersdorf am Neusiedlersee</option>
+                    <option value="tarifa">Tarifa</option>
+                    <option value="lo_stagnone">Lo Stagnone (Sizilien)</option>
+                </select>
+                <div class="spot-description" id="spot-description"></div>
+            </div>
+
+            <!-- Number of Kites -->
+            <div class="form-group full-width">
+                <label for="kite-count-slider">Maximale Anzahl Kites</label>
+                <div class="slider-container">
+                    <input type="range" id="kite-count-slider" min="1" max="5" value="3" step="1">
+                    <span class="slider-value" id="kite-count-display">3</span>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-group full-width">
+                <button type="button" class="btn-primary" id="optimize-btn">
+                    &#9889; Optimale Kites berechnen
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results-section" class="hidden">
+
+        <!-- Results Header -->
+        <div class="results-header">
+            <h2>Dein optimales Kite-Quiver</h2>
+            <div class="spot-name" id="result-spot-name"></div>
+        </div>
+
+        <!-- Kite Size Cards -->
+        <div class="card">
+            <div class="card-title">
+                <span>&#127881;</span> Empfohlene Kite-Gr&ouml;&szlig;en
+            </div>
+            <div class="kite-cards" id="kite-sizes"></div>
+
+            <!-- Stats -->
+            <div class="stats-row">
+                <div class="stat-box">
+                    <div class="stat-value" id="total-days">0</div>
+                    <div class="stat-label">Fahrbare Tage / Jahr</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="coverage-pct">0%</div>
+                    <div class="stat-label">Wind-Abdeckung</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wind Distribution Chart -->
+        <div class="card">
+            <div class="card-title">
+                <span>&#128168;</span> Windverteilung &amp; Kite-Abdeckung
+            </div>
+            <div class="chart-container">
+                <canvas id="wind-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- Monthly Chart -->
+        <div class="card">
+            <div class="card-title">
+                <span>&#128197;</span> Fahrbare Tage pro Monat
+            </div>
+            <div class="chart-container monthly">
+                <canvas id="monthly-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- Monthly Detail Table -->
+        <div class="card">
+            <div class="card-title">
+                <span>&#128202;</span> Monats&uuml;bersicht
+            </div>
+            <table class="monthly-table">
+                <thead>
+                    <tr>
+                        <th>Monat</th>
+                        <th class="text-right">Fahrbar</th>
+                        <th class="text-right">Gesamt</th>
+                        <th class="text-right">Quote</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="monthly-table-body"></tbody>
+                <tfoot id="monthly-table-foot"></tfoot>
+            </table>
+        </div>
+
+    </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+    <div class="disclaimer">
+        Die Empfehlungen basieren auf statistischen Windmodellen (Weibull-Verteilung) und historischen Wetterdaten.
+        Tats&auml;chliche Bedingungen k&ouml;nnen abweichen. Keine Gew&auml;hr auf Vollst&auml;ndigkeit oder Richtigkeit.
+    </div>
+    <div>
+        Ein Tool von <a href="https://www.lakeunited.com" target="_blank" rel="noopener">LakeUnited.com</a>
+        &middot; &copy; 2026
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="js/engine.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

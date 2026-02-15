@@ -1,0 +1,509 @@
+/* ============================================================
+   Kite Size Optimizer — LakeUnited Branding
+   www.lakeunited.com
+   ============================================================ */
+
+:root {
+    --lu-primary: #0c4a6e;
+    --lu-primary-light: #0369a1;
+    --lu-accent: #0891b2;
+    --lu-accent-light: #22d3ee;
+    --lu-bg: #f0f9ff;
+    --lu-card: #ffffff;
+    --lu-text: #1e293b;
+    --lu-text-muted: #64748b;
+    --lu-border: #e2e8f0;
+    --lu-success: #059669;
+    --lu-radius: 12px;
+    --lu-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+    --lu-shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.07), 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--lu-bg);
+    color: var(--lu-text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ---- HEADER ---- */
+.header {
+    background: linear-gradient(135deg, var(--lu-primary) 0%, var(--lu-primary-light) 50%, var(--lu-accent) 100%);
+    color: white;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+}
+
+.header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 28px 24px 32px;
+    position: relative;
+    z-index: 1;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+.header-brand a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.9;
+}
+
+.header-brand a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.header p {
+    margin-top: 8px;
+    font-size: 1.05rem;
+    opacity: 0.85;
+    max-width: 600px;
+}
+
+/* ---- MAIN CONTENT ---- */
+.main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* ---- CARD ---- */
+.card {
+    background: var(--lu-card);
+    border-radius: var(--lu-radius);
+    box-shadow: var(--lu-shadow);
+    padding: 28px;
+    margin-bottom: 24px;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--lu-primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ---- FORM ---- */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--lu-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group select,
+.form-group input[type="number"] {
+    padding: 10px 14px;
+    border: 1.5px solid var(--lu-border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--lu-text);
+    background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: auto;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    outline: none;
+    border-color: var(--lu-accent);
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.15);
+}
+
+/* Range slider */
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.slider-container input[type="range"] {
+    flex: 1;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--lu-border);
+    border-radius: 3px;
+    outline: none;
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--lu-accent);
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.15s;
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+.slider-container input[type="range"]::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--lu-accent);
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider-value {
+    min-width: 50px;
+    text-align: right;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--lu-primary);
+}
+
+.spot-description {
+    font-size: 0.88rem;
+    color: var(--lu-text-muted);
+    margin-top: 2px;
+    line-height: 1.5;
+}
+
+/* ---- BUTTON ---- */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--lu-accent) 0%, var(--lu-primary-light) 100%);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    box-shadow: 0 2px 8px rgba(8, 145, 178, 0.3);
+    width: 100%;
+    margin-top: 8px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(8, 145, 178, 0.35);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* ---- RESULTS ---- */
+.hidden {
+    display: none !important;
+}
+
+.results-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.results-header h2 {
+    font-size: 1.4rem;
+    color: var(--lu-primary);
+}
+
+.results-header .spot-name {
+    color: var(--lu-text-muted);
+    font-size: 0.95rem;
+    margin-top: 4px;
+}
+
+/* Stats row */
+.stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 20px 16px;
+    background: linear-gradient(135deg, rgba(8, 145, 178, 0.06) 0%, rgba(12, 74, 110, 0.04) 100%);
+    border-radius: 10px;
+    border: 1px solid rgba(8, 145, 178, 0.12);
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--lu-accent);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.82rem;
+    color: var(--lu-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
+}
+
+/* Kite cards */
+.kite-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+}
+
+.kite-card {
+    border: 2.5px solid var(--lu-accent);
+    border-radius: 12px;
+    padding: 20px 24px;
+    text-align: center;
+    min-width: 120px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.kite-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--lu-shadow-lg);
+}
+
+.kite-size-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--lu-primary);
+    line-height: 1;
+}
+
+.kite-unit {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--lu-text-muted);
+}
+
+.kite-wind-range {
+    font-size: 0.85rem;
+    color: var(--lu-text-muted);
+    margin-top: 6px;
+}
+
+.range-icon {
+    font-style: normal;
+}
+
+/* Charts */
+.chart-container {
+    position: relative;
+    height: 340px;
+    margin: 20px 0;
+}
+
+.chart-container.monthly {
+    height: 260px;
+}
+
+/* Monthly table */
+.monthly-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 16px;
+}
+
+.monthly-table th,
+.monthly-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--lu-border);
+}
+
+.monthly-table th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--lu-text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.monthly-table td.text-right,
+.monthly-table th.text-right {
+    text-align: right;
+}
+
+.monthly-table tbody tr:hover {
+    background: rgba(8, 145, 178, 0.04);
+}
+
+.monthly-table tfoot td {
+    border-bottom: none;
+    border-top: 2px solid var(--lu-border);
+    padding-top: 10px;
+}
+
+/* Mini bar in table */
+.mini-bar {
+    height: 8px;
+    background: var(--lu-border);
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 80px;
+}
+
+.mini-bar-fill {
+    height: 100%;
+    background: var(--lu-accent);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+}
+
+/* ---- FOOTER ---- */
+.footer {
+    text-align: center;
+    padding: 32px 24px;
+    color: var(--lu-text-muted);
+    font-size: 0.82rem;
+}
+
+.footer a {
+    color: var(--lu-accent);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer .disclaimer {
+    max-width: 600px;
+    margin: 0 auto 12px;
+    line-height: 1.5;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 640px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .header-inner {
+        padding: 20px 16px 24px;
+    }
+
+    .main {
+        padding: 16px;
+    }
+
+    .card {
+        padding: 20px 16px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .stats-row {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+
+    .kite-cards {
+        gap: 8px;
+    }
+
+    .kite-card {
+        padding: 14px 16px;
+        min-width: 100px;
+    }
+
+    .kite-size-number {
+        font-size: 1.8rem;
+    }
+
+    .chart-container {
+        height: 280px;
+    }
+
+    .chart-container.monthly {
+        height: 220px;
+    }
+
+    .monthly-table {
+        font-size: 0.82rem;
+    }
+
+    .monthly-table th,
+    .monthly-table td {
+        padding: 6px 8px;
+    }
+}
