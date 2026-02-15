@@ -135,19 +135,21 @@ const AVAILABLE_KITE_SIZES = [7, 8, 9, 10, 11, 12, 13, 14, 15, 17];
 /**
  * Reference wind ranges for an 80 kg rider (knots).
  * Min = minimum wind to get planing, Max = maximum comfortable wind.
+ * safetyMax = absolute ceiling — kite becomes unflyable/dangerous beyond this.
+ * Large kites overpower quickly and have a narrower usable wind window.
  * Based on typical LEI tube kite performance data.
  */
 const REFERENCE_WIND_RANGES = {
-    7:  { min: 21, max: 33 },
-    8:  { min: 19, max: 30 },
-    9:  { min: 17, max: 28 },
-    10: { min: 16, max: 26 },
-    11: { min: 15, max: 24 },
-    12: { min: 13, max: 22 },
-    13: { min: 12, max: 21 },
-    14: { min: 11, max: 20 },
-    15: { min: 10, max: 19 },
-    17: { min: 9,  max: 17 }
+    7:  { min: 22, max: 35, safetyMax: 40 },
+    8:  { min: 20, max: 32, safetyMax: 37 },
+    9:  { min: 17, max: 27, safetyMax: 33 },
+    10: { min: 15, max: 24, safetyMax: 30 },
+    11: { min: 14, max: 22, safetyMax: 27 },
+    12: { min: 12, max: 20, safetyMax: 24 },
+    13: { min: 11, max: 18, safetyMax: 22 },
+    14: { min: 10, max: 17, safetyMax: 20 },
+    15: { min: 9,  max: 15, safetyMax: 18 },
+    17: { min: 8,  max: 13, safetyMax: 16 }
 };
 
 /** Skill level adjustments (knots added to min/max) */
@@ -168,6 +170,8 @@ const STYLE_ADJUSTMENTS = {
 /**
  * Compute the effective wind range for a kite given rider parameters.
  * Wind ranges scale with sqrt(weight/80) — heavier riders need more wind.
+ * The safetyMax acts as a hard ceiling: large kites become unflyable/dangerous
+ * above certain wind speeds regardless of skill level.
  */
 function getWindRange(kiteSize, riderWeight, skillLevel, ridingStyle) {
     const ref = REFERENCE_WIND_RANGES[kiteSize];
@@ -175,9 +179,10 @@ function getWindRange(kiteSize, riderWeight, skillLevel, ridingStyle) {
     const weightFactor = Math.sqrt(riderWeight / 80);
     const skill = SKILL_ADJUSTMENTS[skillLevel] || SKILL_ADJUSTMENTS.intermediate;
     const style = STYLE_ADJUSTMENTS[ridingStyle] || STYLE_ADJUSTMENTS.freeride;
+    const safetyMax = Math.round(ref.safetyMax * weightFactor);
     return {
         min: Math.max(4, Math.round(ref.min * weightFactor + skill.minAdd + style.minAdd)),
-        max: Math.min(50, Math.round(ref.max * weightFactor + skill.maxAdd + style.maxAdd))
+        max: Math.min(safetyMax, Math.round(ref.max * weightFactor + skill.maxAdd + style.maxAdd))
     };
 }
 
