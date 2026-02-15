@@ -1,22 +1,25 @@
 /* ============================================================
    Kite Size Optimizer — Moerzinger.eu Branding
    www.moerzinger.eu
+   Dark theme inspired by LakeUnited CD
    ============================================================ */
 
 :root {
-    --lu-primary: #0c4a6e;
-    --lu-primary-light: #0369a1;
-    --lu-accent: #0891b2;
-    --lu-accent-light: #22d3ee;
-    --lu-bg: #f0f9ff;
-    --lu-card: #ffffff;
-    --lu-text: #1e293b;
-    --lu-text-muted: #64748b;
-    --lu-border: #e2e8f0;
-    --lu-success: #059669;
+    --lu-primary: #ffffff;
+    --lu-primary-light: #e0e0e0;
+    --lu-accent: #E8734A;
+    --lu-accent-light: #F09070;
+    --lu-accent-dark: #D45A30;
+    --lu-bg: #0f0f0f;
+    --lu-card: #1a1a1a;
+    --lu-card-elevated: #222222;
+    --lu-text: #f0f0f0;
+    --lu-text-muted: #9a9a9a;
+    --lu-border: #2e2e2e;
+    --lu-success: #4ade80;
     --lu-radius: 12px;
-    --lu-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
-    --lu-shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.07), 0 10px 30px rgba(0, 0, 0, 0.08);
+    --lu-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+    --lu-shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 *, *::before, *::after {
@@ -35,11 +38,12 @@ body {
 
 /* ---- HEADER ---- */
 .header {
-    background: linear-gradient(135deg, var(--lu-primary) 0%, var(--lu-primary-light) 50%, var(--lu-accent) 100%);
+    background: linear-gradient(135deg, #111111 0%, #1a1a1a 50%, #222222 100%);
     color: white;
     padding: 0;
     position: relative;
     overflow: hidden;
+    border-bottom: 3px solid var(--lu-accent);
 }
 
 .header::before {
@@ -49,7 +53,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.5;
 }
 
@@ -72,8 +76,12 @@ body {
     opacity: 0.85;
 }
 
+.header-brand span {
+    color: var(--lu-accent);
+}
+
 .header-brand a {
-    color: white;
+    color: var(--lu-accent);
     text-decoration: none;
     opacity: 0.9;
 }
@@ -88,13 +96,15 @@ body {
     font-weight: 700;
     letter-spacing: -0.5px;
     line-height: 1.2;
+    color: #ffffff;
 }
 
 .header p {
     margin-top: 8px;
     font-size: 1.05rem;
-    opacity: 0.85;
+    opacity: 0.7;
     max-width: 600px;
+    color: #cccccc;
 }
 
 /* ---- MAIN CONTENT ---- */
@@ -111,12 +121,13 @@ body {
     box-shadow: var(--lu-shadow);
     padding: 28px;
     margin-bottom: 24px;
+    border: 1px solid var(--lu-border);
 }
 
 .card-title {
     font-size: 1.15rem;
     font-weight: 600;
-    color: var(--lu-primary);
+    color: var(--lu-accent);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -155,7 +166,7 @@ body {
     border-radius: 8px;
     font-size: 0.95rem;
     color: var(--lu-text);
-    background: white;
+    background: var(--lu-card-elevated);
     transition: border-color 0.2s, box-shadow 0.2s;
     appearance: auto;
 }
@@ -164,7 +175,7 @@ body {
 .form-group input:focus {
     outline: none;
     border-color: var(--lu-accent);
-    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.15);
+    box-shadow: 0 0 0 3px rgba(232, 115, 74, 0.2);
 }
 
 /* Range slider */
@@ -192,8 +203,8 @@ body {
     border-radius: 50%;
     background: var(--lu-accent);
     cursor: pointer;
-    border: 3px solid white;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    border: 3px solid var(--lu-card);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
     transition: transform 0.15s;
 }
 
@@ -207,8 +218,8 @@ body {
     border-radius: 50%;
     background: var(--lu-accent);
     cursor: pointer;
-    border: 3px solid white;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    border: 3px solid var(--lu-card);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .slider-value {
@@ -216,7 +227,7 @@ body {
     text-align: right;
     font-weight: 600;
     font-size: 1.05rem;
-    color: var(--lu-primary);
+    color: var(--lu-accent);
 }
 
 .spot-description {
@@ -232,7 +243,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background: linear-gradient(135deg, var(--lu-accent) 0%, var(--lu-primary-light) 100%);
+    background: var(--lu-accent);
     color: white;
     border: none;
     padding: 14px 32px;
@@ -240,15 +251,16 @@ body {
     font-weight: 600;
     border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
-    box-shadow: 0 2px 8px rgba(8, 145, 178, 0.3);
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    box-shadow: 0 2px 8px rgba(232, 115, 74, 0.3);
     width: 100%;
     margin-top: 8px;
 }
 
 .btn-primary:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(8, 145, 178, 0.35);
+    background: var(--lu-accent-dark);
+    box-shadow: 0 4px 16px rgba(232, 115, 74, 0.4);
 }
 
 .btn-primary:active {
@@ -272,7 +284,7 @@ body {
 
 .results-header h2 {
     font-size: 1.4rem;
-    color: var(--lu-primary);
+    color: #ffffff;
 }
 
 .results-header .spot-name {
@@ -292,9 +304,9 @@ body {
 .stat-box {
     text-align: center;
     padding: 20px 16px;
-    background: linear-gradient(135deg, rgba(8, 145, 178, 0.06) 0%, rgba(12, 74, 110, 0.04) 100%);
+    background: rgba(232, 115, 74, 0.08);
     border-radius: 10px;
-    border: 1px solid rgba(8, 145, 178, 0.12);
+    border: 1px solid rgba(232, 115, 74, 0.2);
 }
 
 .stat-value {
@@ -327,18 +339,19 @@ body {
     padding: 20px 24px;
     text-align: center;
     min-width: 120px;
+    background: rgba(232, 115, 74, 0.05);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .kite-card:hover {
     transform: translateY(-3px);
-    box-shadow: var(--lu-shadow-lg);
+    box-shadow: 0 4px 20px rgba(232, 115, 74, 0.2);
 }
 
 .kite-size-number {
     font-size: 2.2rem;
     font-weight: 700;
-    color: var(--lu-primary);
+    color: #ffffff;
     line-height: 1;
 }
 
@@ -398,7 +411,7 @@ body {
 }
 
 .monthly-table tbody tr:hover {
-    background: rgba(8, 145, 178, 0.04);
+    background: rgba(232, 115, 74, 0.06);
 }
 
 .monthly-table tfoot td {
@@ -429,6 +442,7 @@ body {
     padding: 32px 24px;
     color: var(--lu-text-muted);
     font-size: 0.82rem;
+    border-top: 1px solid var(--lu-border);
 }
 
 .footer a {

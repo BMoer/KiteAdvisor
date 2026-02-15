@@ -6,13 +6,13 @@
 let windChart = null;
 let monthlyChart = null;
 
-// Kite card color palette
+// Kite card color palette (dark theme)
 const KITE_COLORS = [
-    { bg: 'rgba(8, 145, 178, 0.15)', border: '#0891b2', fill: 'rgba(8, 145, 178, 0.3)' },
-    { bg: 'rgba(217, 70, 239, 0.15)', border: '#d946ef', fill: 'rgba(217, 70, 239, 0.3)' },
-    { bg: 'rgba(245, 158, 11, 0.15)', border: '#f59e0b', fill: 'rgba(245, 158, 11, 0.3)' },
-    { bg: 'rgba(34, 197, 94, 0.15)', border: '#22c55e', fill: 'rgba(34, 197, 94, 0.3)' },
-    { bg: 'rgba(239, 68, 68, 0.15)', border: '#ef4444', fill: 'rgba(239, 68, 68, 0.3)' }
+    { bg: 'rgba(232, 115, 74, 0.12)', border: '#E8734A', fill: 'rgba(232, 115, 74, 0.3)' },
+    { bg: 'rgba(74, 222, 128, 0.12)', border: '#4ade80', fill: 'rgba(74, 222, 128, 0.3)' },
+    { bg: 'rgba(96, 165, 250, 0.12)', border: '#60a5fa', fill: 'rgba(96, 165, 250, 0.3)' },
+    { bg: 'rgba(251, 191, 36, 0.12)', border: '#fbbf24', fill: 'rgba(251, 191, 36, 0.3)' },
+    { bg: 'rgba(192, 132, 252, 0.12)', border: '#c084fc', fill: 'rgba(192, 132, 252, 0.3)' }
 ];
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -139,16 +139,16 @@ function renderWindChart(result, spotKey) {
                 {
                     label: 'Fahrbare Tage',
                     data: coveredDays,
-                    backgroundColor: 'rgba(8, 145, 178, 0.7)',
-                    borderColor: '#0891b2',
+                    backgroundColor: 'rgba(232, 115, 74, 0.8)',
+                    borderColor: '#E8734A',
                     borderWidth: 1,
                     borderRadius: 2
                 },
                 {
                     label: 'Nicht abgedeckt',
                     data: uncoveredDays,
-                    backgroundColor: 'rgba(203, 213, 225, 0.5)',
-                    borderColor: '#cbd5e1',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    borderColor: 'rgba(255, 255, 255, 0.15)',
                     borderWidth: 1,
                     borderRadius: 2
                 }
@@ -160,7 +160,7 @@ function renderWindChart(result, spotKey) {
             plugins: {
                 legend: {
                     position: 'top',
-                    labels: { font: { size: 12 }, usePointStyle: true, padding: 16 }
+                    labels: { font: { size: 12 }, usePointStyle: true, padding: 16, color: '#9a9a9a' }
                 },
                 tooltip: {
                     callbacks: {
@@ -180,17 +180,19 @@ function renderWindChart(result, spotKey) {
             scales: {
                 x: {
                     stacked: true,
-                    title: { display: true, text: 'Windgeschwindigkeit (Knoten)', font: { size: 13 } },
+                    title: { display: true, text: 'Windgeschwindigkeit (Knoten)', font: { size: 13 }, color: '#9a9a9a' },
                     ticks: {
                         callback: function (val) { return val % 5 === 0 ? val : ''; },
-                        maxRotation: 0
+                        maxRotation: 0,
+                        color: '#9a9a9a'
                     },
                     grid: { display: false }
                 },
                 y: {
                     stacked: true,
-                    title: { display: true, text: 'Tage pro Jahr', font: { size: 13 } },
-                    grid: { color: 'rgba(0,0,0,0.06)' }
+                    title: { display: true, text: 'Tage pro Jahr', font: { size: 13 }, color: '#9a9a9a' },
+                    ticks: { color: '#9a9a9a' },
+                    grid: { color: 'rgba(255,255,255,0.06)' }
                 }
             }
         },
@@ -252,11 +254,11 @@ function renderMonthlyChart(result) {
                     data: result.monthlyRideableDays,
                     backgroundColor: result.monthlyRideableDays.map(d => {
                         const ratio = d / 31;
-                        if (ratio > 0.5) return 'rgba(8, 145, 178, 0.8)';
-                        if (ratio > 0.3) return 'rgba(8, 145, 178, 0.6)';
-                        return 'rgba(8, 145, 178, 0.35)';
+                        if (ratio > 0.5) return 'rgba(232, 115, 74, 0.85)';
+                        if (ratio > 0.3) return 'rgba(232, 115, 74, 0.6)';
+                        return 'rgba(232, 115, 74, 0.35)';
                     }),
-                    borderColor: '#0891b2',
+                    borderColor: '#E8734A',
                     borderWidth: 1,
                     borderRadius: 4
                 }
@@ -280,11 +282,13 @@ function renderMonthlyChart(result) {
             },
             scales: {
                 x: {
+                    ticks: { color: '#9a9a9a' },
                     grid: { display: false }
                 },
                 y: {
-                    title: { display: true, text: 'Fahrbare Tage', font: { size: 13 } },
-                    grid: { color: 'rgba(0,0,0,0.06)' },
+                    title: { display: true, text: 'Fahrbare Tage', font: { size: 13 }, color: '#9a9a9a' },
+                    ticks: { color: '#9a9a9a' },
+                    grid: { color: 'rgba(255,255,255,0.06)' },
                     suggestedMax: 31
                 }
             }
