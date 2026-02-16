@@ -1,0 +1,696 @@
+{
+  "spot": "podersdorf",
+  "label": "Podersdorf am Neusiedlersee",
+  "lat": 47.86,
+  "lon": 16.83,
+  "station_id": "synthetic",
+  "station_name": "Weibull model (synthetic)",
+  "station_distance_km": 0,
+  "years_covered": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "total_hours": 43800,
+  "missing_pct": 0,
+  "wind_distribution_annual": [
+    {
+      "min_kts": 0,
+      "max_kts": 5,
+      "hours": 9684
+    },
+    {
+      "min_kts": 5,
+      "max_kts": 10,
+      "hours": 16627
+    },
+    {
+      "min_kts": 10,
+      "max_kts": 15,
+      "hours": 11195
+    },
+    {
+      "min_kts": 15,
+      "max_kts": 20,
+      "hours": 4642
+    },
+    {
+      "min_kts": 20,
+      "max_kts": 25,
+      "hours": 1331
+    },
+    {
+      "min_kts": 25,
+      "max_kts": 30,
+      "hours": 275
+    },
+    {
+      "min_kts": 30,
+      "max_kts": 35,
+      "hours": 42
+    },
+    {
+      "min_kts": 35,
+      "max_kts": 40,
+      "hours": 5
+    },
+    {
+      "min_kts": 40,
+      "max_kts": 45,
+      "hours": 0
+    },
+    {
+      "min_kts": 45,
+      "max_kts": 50,
+      "hours": 0
+    }
+  ],
+  "wind_distribution_monthly": {
+    "1": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 1329
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1593
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 646
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 135
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 16
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 1
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 0
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "2": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 935
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1430
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 752
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 206
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 32
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 3
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 0
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "3": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 801
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1509
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 991
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 343
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 68
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 8
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 1
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "4": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 539
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1180
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 1045
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 567
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 206
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 52
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 9
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 1
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "5": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 431
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1096
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 1115
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 692
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 286
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 81
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 16
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 2
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "6": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 495
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1196
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 1095
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 577
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 191
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 41
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 6
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 1
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "7": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 663
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1361
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 1061
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 475
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 133
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 24
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 3
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "8": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 854
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1461
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 951
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 356
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 84
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 13
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 1
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "9": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 642
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1317
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 1026
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 459
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 129
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 24
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 3
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "10": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 663
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1361
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 1061
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 475
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 133
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 24
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 3
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "11": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 1002
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1532
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 806
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 221
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 35
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 3
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 0
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "12": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 1329
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1593
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 646
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 135
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 16
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 1
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 0
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ]
+  }
+}

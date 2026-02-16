@@ -1,0 +1,696 @@
+{
+  "spot": "lo_stagnone",
+  "label": "Lo Stagnone (Sizilien)",
+  "lat": 37.87,
+  "lon": 12.47,
+  "station_id": "synthetic",
+  "station_name": "Weibull model (synthetic)",
+  "station_distance_km": 0,
+  "years_covered": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "total_hours": 43800,
+  "missing_pct": 0,
+  "wind_distribution_annual": [
+    {
+      "min_kts": 0,
+      "max_kts": 5,
+      "hours": 5995
+    },
+    {
+      "min_kts": 5,
+      "max_kts": 10,
+      "hours": 11356
+    },
+    {
+      "min_kts": 10,
+      "max_kts": 15,
+      "hours": 10707
+    },
+    {
+      "min_kts": 15,
+      "max_kts": 20,
+      "hours": 7733
+    },
+    {
+      "min_kts": 20,
+      "max_kts": 25,
+      "hours": 4608
+    },
+    {
+      "min_kts": 25,
+      "max_kts": 30,
+      "hours": 2236
+    },
+    {
+      "min_kts": 30,
+      "max_kts": 35,
+      "hours": 854
+    },
+    {
+      "min_kts": 35,
+      "max_kts": 40,
+      "hours": 249
+    },
+    {
+      "min_kts": 40,
+      "max_kts": 45,
+      "hours": 54
+    },
+    {
+      "min_kts": 45,
+      "max_kts": 50,
+      "hours": 8
+    }
+  ],
+  "wind_distribution_monthly": {
+    "1": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 1152
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1452
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 778
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 264
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 62
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 11
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 1
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "2": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 823
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1274
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 822
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 330
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 91
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 18
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 3
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "3": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 557
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1219
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 1080
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 586
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 213
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 54
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 9
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 1
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "4": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 275
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 826
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 1022
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 804
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 440
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 172
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 49
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 10
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 1
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "5": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 167
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 634
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 961
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 924
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 617
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 292
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 98
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 23
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 4
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "6": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 107
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 458
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 786
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 878
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 704
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 415
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 180
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 57
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 13
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 2
+      }
+    ],
+    "7": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 84
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 397
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 739
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 893
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 776
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 496
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 232
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 79
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 19
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 3
+      }
+    ],
+    "8": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 111
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 473
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 812
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 908
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 728
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 429
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 186
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 59
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 13
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 2
+      }
+    ],
+    "9": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 211
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 716
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 984
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 859
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 520
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 224
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 69
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 15
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 2
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "10": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 474
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1090
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 1066
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 671
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 297
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 96
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 23
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 4
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 1
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "11": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 882
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1365
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 880
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 353
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 97
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 19
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 3
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "12": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 1152
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1452
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 778
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 264
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 62
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 11
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 1
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ]
+  }
+}
