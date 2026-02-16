@@ -122,6 +122,29 @@ const SPOTS = {
             { k: 1.8, mean: 9 },   // Nov
             { k: 1.7, mean: 8 }    // Dec
         ]
+    },
+    hamata: {
+        name: 'Hamata',
+        country: '\u00c4gypten',
+        flag: '\u{1F1EA}\u{1F1EC}',
+        description: 'Premium-Spot am s\u00fcdlichen Roten Meer. Zuverl\u00e4ssiger thermischer Nordwind (Shamal) von M\u00e4rz bis November. Flachwasser-Lagune mit t\u00fcrkisem Wasser, konstante Side-Onshore-Bedingungen. Einer der windsichersten Spots weltweit.',
+        // Weibull parameters derived from Red Sea / Marsa Alam region weather data
+        // Hamata benefits from strong thermal acceleration along the coast
+        // Peak season May–Sep with very consistent 18–25 kts
+        windParams: [
+            { k: 2.2, mean: 14 },  // Jan — moderate, occasional cold fronts
+            { k: 2.3, mean: 15 },  // Feb — picking up
+            { k: 2.5, mean: 17 },  // Mar — season starts, thermal builds
+            { k: 2.7, mean: 19 },  // Apr — reliable thermal
+            { k: 2.9, mean: 21 },  // May — strong & consistent
+            { k: 3.0, mean: 22 },  // Jun — peak season
+            { k: 3.1, mean: 23 },  // Jul — peak, very consistent
+            { k: 3.0, mean: 22 },  // Aug — peak season
+            { k: 2.8, mean: 20 },  // Sep — still strong
+            { k: 2.5, mean: 17 },  // Oct — winding down
+            { k: 2.3, mean: 15 },  // Nov — moderate
+            { k: 2.2, mean: 14 }   // Dec — lightest month
+        ]
     }
 };
 

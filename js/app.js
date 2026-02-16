@@ -51,6 +51,7 @@ function updateSpotDescription() {
 
 function runOptimization() {
     const weight = parseInt(document.getElementById('weight-slider').value);
+    const height = parseInt(document.getElementById('height-slider').value);
     const skill = document.getElementById('skill-select').value;
     const style = document.getElementById('style-select').value;
     const spotKey = document.getElementById('spot-select').value;
@@ -65,13 +66,13 @@ function runOptimization() {
     // Small delay so UI updates before heavy computation
     setTimeout(() => {
         const result = optimizeKiteSizes(numKites, weight, skill, style, spotKey);
-        displayResults(result, weight, skill, style, spotKey);
+        displayResults(result, weight, height, skill, style, spotKey, numKites);
         btn.textContent = originalText;
         btn.disabled = false;
     }, 50);
 }
 
-function displayResults(result, weight, skill, style, spotKey) {
+function displayResults(result, weight, height, skill, style, spotKey, numKites) {
     const resultsSection = document.getElementById('results-section');
     resultsSection.classList.remove('hidden');
 
@@ -113,7 +114,7 @@ function displayResults(result, weight, skill, style, spotKey) {
     renderMonthlyTable(result);
 
     // Calibration feedback — random kite from quiver
-    showCalibrationPrompt(result, weight, skill, style, spotKey);
+    showCalibrationPrompt(result, weight, height, skill, style, spotKey, numKites);
 
     // Scroll to results
     setTimeout(() => {
@@ -348,7 +349,7 @@ function renderMonthlyTable(result) {
  * Pick a random kite from the result and ask the user whether the
  * recommendation matches their expectations. Store response in IndexedDB.
  */
-function showCalibrationPrompt(result, weight, skill, style, spotKey) {
+function showCalibrationPrompt(result, weight, height, skill, style, spotKey, numKites) {
     const card = document.getElementById('calibration-card');
     const questionEl = document.getElementById('calibration-question');
     const thanksEl = document.getElementById('calibration-thanks');
@@ -361,6 +362,11 @@ function showCalibrationPrompt(result, weight, skill, style, spotKey) {
     questionEl.textContent =
         'W\u00fcrdest du mit einem ' + kiteSize + 'm\u00b2 Kite bei ' +
         range.min + '\u2013' + range.max + ' Knoten fahren?';
+
+    // Build full quiver snapshot for context
+    var quiver = result.kiteSizes.map(function (size, i) {
+        return { size: size, min: result.windRanges[i].min, max: result.windRanges[i].max };
+    });
 
     // Reset state
     thanksEl.classList.add('hidden');
@@ -377,13 +383,21 @@ function showCalibrationPrompt(result, weight, skill, style, spotKey) {
             if (answer !== 'skip') {
                 CalibrationDB.saveFeedback({
                     timestamp: new Date().toISOString(),
-                    kiteSize: kiteSize,
-                    windRangeMin: range.min,
-                    windRangeMax: range.max,
+                    // Rider profile
                     riderWeight: weight,
+                    riderHeight: height,
                     skill: skill,
                     style: style,
+                    // Spot & config
                     spot: spotKey,
+                    numKites: numKites,
+                    // Full quiver context
+                    quiver: quiver,
+                    totalRideableDays: result.totalRideableDays,
+                    // Specific kite being rated
+                    askedKiteSize: kiteSize,
+                    askedWindRangeMin: range.min,
+                    askedWindRangeMax: range.max,
                     answer: answer
                 });
             }
