@@ -6,6 +6,10 @@
 let windChart = null;
 let monthlyChart = null;
 
+// Default skill & style (removed from UI for simplicity)
+const DEFAULT_SKILL = 'intermediate';
+const DEFAULT_STYLE = 'freeride';
+
 // Kite card color palette (dark theme)
 const KITE_COLORS = [
     { bg: 'rgba(232, 115, 74, 0.12)', border: '#E8734A', fill: 'rgba(232, 115, 74, 0.3)' },
@@ -16,16 +20,11 @@ const KITE_COLORS = [
 ];
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Slider displays
     const weightSlider = document.getElementById('weight-slider');
-    const heightSlider = document.getElementById('height-slider');
     const kiteCountSlider = document.getElementById('kite-count-slider');
 
     weightSlider.addEventListener('input', () => {
         document.getElementById('weight-display').textContent = weightSlider.value + ' kg';
-    });
-    heightSlider.addEventListener('input', () => {
-        document.getElementById('height-display').textContent = heightSlider.value + ' cm';
     });
     kiteCountSlider.addEventListener('input', () => {
         document.getElementById('kite-count-display').textContent = kiteCountSlider.value;
@@ -51,9 +50,6 @@ function updateSpotDescription() {
 
 function runOptimization() {
     const weight = parseInt(document.getElementById('weight-slider').value);
-    const height = parseInt(document.getElementById('height-slider').value);
-    const skill = document.getElementById('skill-select').value;
-    const style = document.getElementById('style-select').value;
     const spotKey = document.getElementById('spot-select').value;
     const numKites = parseInt(document.getElementById('kite-count-slider').value);
 
@@ -65,14 +61,14 @@ function runOptimization() {
 
     // Small delay so UI updates before heavy computation
     setTimeout(() => {
-        const result = optimizeKiteSizes(numKites, weight, skill, style, spotKey);
-        displayResults(result, weight, height, skill, style, spotKey, numKites);
+        const result = optimizeKiteSizes(numKites, weight, DEFAULT_SKILL, DEFAULT_STYLE, spotKey);
+        displayResults(result, weight, spotKey, numKites);
         btn.textContent = originalText;
         btn.disabled = false;
     }, 50);
 }
 
-function displayResults(result, weight, height, skill, style, spotKey, numKites) {
+function displayResults(result, weight, spotKey, numKites) {
     const resultsSection = document.getElementById('results-section');
     resultsSection.classList.remove('hidden');
 
@@ -114,7 +110,7 @@ function displayResults(result, weight, height, skill, style, spotKey, numKites)
     renderMonthlyTable(result);
 
     // Calibration feedback — random kite from quiver
-    showCalibrationPrompt(result, weight, height, skill, style, spotKey, numKites);
+    showCalibrationPrompt(result, weight, spotKey, numKites);
 
     // Scroll to results
     setTimeout(() => {
@@ -161,9 +157,12 @@ function renderWindChart(result, spotKey) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            layout: {
+                padding: { top: 50 }
+            },
             plugins: {
                 legend: {
-                    position: 'top',
+                    position: 'bottom',
                     labels: { font: { size: 12 }, usePointStyle: true, padding: 16, color: '#9a9a9a' }
                 },
                 tooltip: {
@@ -290,6 +289,7 @@ function renderMonthlyChart(result) {
                     grid: { display: false }
                 },
                 y: {
+                    beginAtZero: true,
                     title: { display: true, text: 'Fahrbare Tage', font: { size: 13 }, color: '#9a9a9a' },
                     ticks: { color: '#9a9a9a' },
                     grid: { color: 'rgba(255,255,255,0.06)' },
@@ -349,7 +349,7 @@ function renderMonthlyTable(result) {
  * Pick a random kite from the result and ask the user whether the
  * recommendation matches their expectations. Store response in IndexedDB.
  */
-function showCalibrationPrompt(result, weight, height, skill, style, spotKey, numKites) {
+function showCalibrationPrompt(result, weight, spotKey, numKites) {
     const card = document.getElementById('calibration-card');
     const questionEl = document.getElementById('calibration-question');
     const thanksEl = document.getElementById('calibration-thanks');
@@ -385,9 +385,8 @@ function showCalibrationPrompt(result, weight, height, skill, style, spotKey, nu
                     timestamp: new Date().toISOString(),
                     // Rider profile
                     riderWeight: weight,
-                    riderHeight: height,
-                    skill: skill,
-                    style: style,
+                    skill: DEFAULT_SKILL,
+                    style: DEFAULT_STYLE,
                     // Spot & config
                     spot: spotKey,
                     numKites: numKites,

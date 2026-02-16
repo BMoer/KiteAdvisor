@@ -152,32 +152,26 @@ const SPOTS = {
 // KITE WIND RANGE MODEL
 // ============================================================
 
-/** Common commercial kite sizes in m² */
-const AVAILABLE_KITE_SIZES = [7, 8, 9, 10, 11, 12, 13, 14, 15, 17];
+/** Standard commercial kite sizes in m² */
+const AVAILABLE_KITE_SIZES = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17];
 
 /**
- * Reference wind ranges for an 80 kg rider (knots).
- * Min = minimum wind to get planing, Max = maximum comfortable wind.
- * safetyMax = absolute ceiling — kite becomes unflyable/dangerous beyond this.
- * Based on typical LEI tube kite performance data and manufacturer wind charts.
+ * Formula-based wind range model.
  *
- * Note: Large kites (15–17 m²) still need ≥12 kn to generate enough pull for
- * planing on a twin-tip. Previous values (8–9 kn min) were unrealistically low
- * and caused the optimizer to always include oversized kites for light-wind days
- * that are not actually rideable.
+ * Industry standard: kite_size_m² = (rider_weight_kg / wind_kts) × 2.2
+ * Rearranged:        ideal_wind   = (rider_weight × 2.2) / kite_size
+ *
+ * Each kite covers a range around its ideal wind:
+ *   min  = ideal × 0.80   (underpowered limit)
+ *   max  = ideal × 1.33   (overpowered / comfortable limit)
+ *   safe = ideal × 1.55   (absolute safety ceiling)
+ *
+ * Example 80 kg / 12 m²: ideal = 14.7 kn → range 12–20 kn
  */
-const REFERENCE_WIND_RANGES = {
-    7:  { min: 22, max: 35, safetyMax: 40 },
-    8:  { min: 20, max: 32, safetyMax: 37 },
-    9:  { min: 18, max: 28, safetyMax: 33 },
-    10: { min: 16, max: 25, safetyMax: 30 },
-    11: { min: 15, max: 23, safetyMax: 27 },
-    12: { min: 14, max: 21, safetyMax: 25 },
-    13: { min: 13, max: 20, safetyMax: 23 },
-    14: { min: 12, max: 19, safetyMax: 22 },
-    15: { min: 12, max: 18, safetyMax: 21 },
-    17: { min: 12, max: 17, safetyMax: 20 }
-};
+const WIND_RANGE_MIN_FACTOR = 0.80;
+const WIND_RANGE_MAX_FACTOR = 1.33;
+const WIND_RANGE_SAFETY_FACTOR = 1.55;
+const GLOBAL_MIN_WIND = 10;
 
 /** Skill level adjustments (knots added to min/max) */
 const SKILL_ADJUSTMENTS = {
@@ -196,20 +190,19 @@ const STYLE_ADJUSTMENTS = {
 
 /**
  * Compute the effective wind range for a kite given rider parameters.
- * Wind ranges scale with sqrt(weight/80) — heavier riders need more wind.
- * The safetyMax acts as a hard ceiling: large kites become unflyable/dangerous
- * above certain wind speeds regardless of skill level.
+ * Uses the industry-standard weight/wind formula to derive ranges
+ * dynamically instead of a static lookup table.
  */
 function getWindRange(kiteSize, riderWeight, skillLevel, ridingStyle) {
-    const ref = REFERENCE_WIND_RANGES[kiteSize];
-    if (!ref) return null;
-    const weightFactor = Math.sqrt(riderWeight / 80);
+    const idealWind = (riderWeight * 2.2) / kiteSize;
     const skill = SKILL_ADJUSTMENTS[skillLevel] || SKILL_ADJUSTMENTS.intermediate;
     const style = STYLE_ADJUSTMENTS[ridingStyle] || STYLE_ADJUSTMENTS.freeride;
-    const safetyMax = Math.round(ref.safetyMax * weightFactor);
+    const safetyMax = Math.round(idealWind * WIND_RANGE_SAFETY_FACTOR);
     return {
-        min: Math.max(10, Math.round(ref.min * weightFactor + skill.minAdd + style.minAdd)),
-        max: Math.min(safetyMax, Math.round(ref.max * weightFactor + skill.maxAdd + style.maxAdd))
+        min: Math.max(GLOBAL_MIN_WIND,
+                      Math.round(idealWind * WIND_RANGE_MIN_FACTOR) + skill.minAdd + style.minAdd),
+        max: Math.min(safetyMax,
+                      Math.round(idealWind * WIND_RANGE_MAX_FACTOR) + skill.maxAdd + style.maxAdd)
     };
 }
 
@@ -311,8 +304,24 @@ function* combinations(arr, k) {
 }
 
 /**
+ * Validate that a set of kites has no wind-range gaps > 2 knots.
+ * Kites sorted by size descending (= wind range ascending).
+ */
+function hasValidOverlap(kiteSizes, riderWeight, skillLevel, ridingStyle) {
+    if (kiteSizes.length <= 1) return true;
+    var sorted = kiteSizes.slice().sort(function (a, b) { return b - a; });
+    for (var i = 0; i < sorted.length - 1; i++) {
+        var rangeBig   = getWindRange(sorted[i],     riderWeight, skillLevel, ridingStyle);
+        var rangeSmall = getWindRange(sorted[i + 1], riderWeight, skillLevel, ridingStyle);
+        if (rangeSmall.min - rangeBig.max > 2) return false;
+    }
+    return true;
+}
+
+/**
  * Find the optimal set of kite sizes that maximizes rideable wind days.
- * Uses brute-force search over all combinations (fast enough for <=13 sizes, <=5 kites).
+ * Uses brute-force search over all combinations with overlap constraint.
+ * Fast enough for <=12 sizes, <=5 kites (max 792 combos).
  */
 function optimizeKiteSizes(numKites, riderWeight, skillLevel, ridingStyle, spotKey) {
     let bestCombo = null;
@@ -320,6 +329,7 @@ function optimizeKiteSizes(numKites, riderWeight, skillLevel, ridingStyle, spotK
     let bestResult = null;
 
     for (const combo of combinations(AVAILABLE_KITE_SIZES, numKites)) {
+        if (!hasValidOverlap(combo, riderWeight, skillLevel, ridingStyle)) continue;
         const result = computeRideableDays(combo, riderWeight, skillLevel, ridingStyle, spotKey);
         if (result.totalDays > bestDays) {
             bestDays = result.totalDays;
