@@ -112,6 +112,9 @@ function displayResults(result, weight, skill, style, spotKey) {
     // Monthly detail table
     renderMonthlyTable(result);
 
+    // Calibration feedback — random kite from quiver
+    showCalibrationPrompt(result, weight, skill, style, spotKey);
+
     // Scroll to results
     setTimeout(() => {
         resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -335,4 +338,66 @@ function renderMonthlyTable(result) {
         '<td class="text-right"><strong>' + totalPct + '%</strong></td>' +
         '<td></td>';
     tfoot.appendChild(tr);
+}
+
+// ============================================================
+// CALIBRATION FEEDBACK
+// ============================================================
+
+/**
+ * Pick a random kite from the result and ask the user whether the
+ * recommendation matches their expectations. Store response in IndexedDB.
+ */
+function showCalibrationPrompt(result, weight, skill, style, spotKey) {
+    const card = document.getElementById('calibration-card');
+    const questionEl = document.getElementById('calibration-question');
+    const thanksEl = document.getElementById('calibration-thanks');
+
+    // Pick a random kite from the quiver
+    const idx = Math.floor(Math.random() * result.kiteSizes.length);
+    const kiteSize = result.kiteSizes[idx];
+    const range = result.windRanges[idx];
+
+    questionEl.textContent =
+        'W\u00fcrdest du mit einem ' + kiteSize + 'm\u00b2 Kite bei ' +
+        range.min + '\u2013' + range.max + ' Knoten fahren?';
+
+    // Reset state
+    thanksEl.classList.add('hidden');
+    card.style.display = '';
+    card.querySelectorAll('.btn-feedback').forEach(function (btn) {
+        btn.disabled = false;
+    });
+
+    // Attach listeners (fresh each time)
+    card.querySelectorAll('.btn-feedback').forEach(function (btn) {
+        const handler = function () {
+            var answer = btn.getAttribute('data-answer');
+
+            if (answer !== 'skip') {
+                CalibrationDB.saveFeedback({
+                    timestamp: new Date().toISOString(),
+                    kiteSize: kiteSize,
+                    windRangeMin: range.min,
+                    windRangeMax: range.max,
+                    riderWeight: weight,
+                    skill: skill,
+                    style: style,
+                    spot: spotKey,
+                    answer: answer
+                });
+            }
+
+            // Show thank-you, disable buttons
+            card.querySelectorAll('.btn-feedback').forEach(function (b) {
+                b.disabled = true;
+            });
+            thanksEl.classList.remove('hidden');
+        };
+
+        // Remove old listeners by cloning
+        var clone = btn.cloneNode(true);
+        btn.parentNode.replaceChild(clone, btn);
+        clone.addEventListener('click', handler);
+    });
 }

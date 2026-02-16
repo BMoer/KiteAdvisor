@@ -171,6 +171,21 @@
             </table>
         </div>
 
+        <!-- Calibration Feedback -->
+        <div class="card" id="calibration-card" style="display:none;">
+            <div class="card-title">
+                <span>&#127919;</span> Kurze R&uuml;ckmeldung
+            </div>
+            <p class="calibration-question" id="calibration-question"></p>
+            <div class="calibration-buttons">
+                <button type="button" class="btn-feedback btn-yes" data-answer="yes">Ja, passt</button>
+                <button type="button" class="btn-feedback btn-no" data-answer="no">Nein, zu gro&szlig;</button>
+                <button type="button" class="btn-feedback btn-small" data-answer="too_small">Nein, zu klein</button>
+                <button type="button" class="btn-feedback btn-skip" data-answer="skip">&Uuml;berspringen</button>
+            </div>
+            <div class="calibration-thanks hidden" id="calibration-thanks">Danke f&uuml;r dein Feedback!</div>
+        </div>
+
     </section>
 
 </main>
@@ -189,6 +204,7 @@
 
 <!-- Scripts -->
 <script src="js/engine.js"></script>
+<script src="js/calibration.js"></script>
 <script src="js/app.js"></script>
 
 </body>
