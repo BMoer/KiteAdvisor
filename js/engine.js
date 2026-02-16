@@ -136,20 +136,24 @@ const AVAILABLE_KITE_SIZES = [7, 8, 9, 10, 11, 12, 13, 14, 15, 17];
  * Reference wind ranges for an 80 kg rider (knots).
  * Min = minimum wind to get planing, Max = maximum comfortable wind.
  * safetyMax = absolute ceiling — kite becomes unflyable/dangerous beyond this.
- * Large kites overpower quickly and have a narrower usable wind window.
- * Based on typical LEI tube kite performance data.
+ * Based on typical LEI tube kite performance data and manufacturer wind charts.
+ *
+ * Note: Large kites (15–17 m²) still need ≥12 kn to generate enough pull for
+ * planing on a twin-tip. Previous values (8–9 kn min) were unrealistically low
+ * and caused the optimizer to always include oversized kites for light-wind days
+ * that are not actually rideable.
  */
 const REFERENCE_WIND_RANGES = {
     7:  { min: 22, max: 35, safetyMax: 40 },
     8:  { min: 20, max: 32, safetyMax: 37 },
-    9:  { min: 17, max: 27, safetyMax: 33 },
-    10: { min: 15, max: 24, safetyMax: 30 },
-    11: { min: 14, max: 22, safetyMax: 27 },
-    12: { min: 12, max: 20, safetyMax: 24 },
-    13: { min: 11, max: 18, safetyMax: 22 },
-    14: { min: 10, max: 17, safetyMax: 20 },
-    15: { min: 9,  max: 15, safetyMax: 18 },
-    17: { min: 8,  max: 13, safetyMax: 16 }
+    9:  { min: 18, max: 28, safetyMax: 33 },
+    10: { min: 16, max: 25, safetyMax: 30 },
+    11: { min: 15, max: 23, safetyMax: 27 },
+    12: { min: 14, max: 21, safetyMax: 25 },
+    13: { min: 13, max: 20, safetyMax: 23 },
+    14: { min: 12, max: 19, safetyMax: 22 },
+    15: { min: 12, max: 18, safetyMax: 21 },
+    17: { min: 12, max: 17, safetyMax: 20 }
 };
 
 /** Skill level adjustments (knots added to min/max) */
@@ -181,7 +185,7 @@ function getWindRange(kiteSize, riderWeight, skillLevel, ridingStyle) {
     const style = STYLE_ADJUSTMENTS[ridingStyle] || STYLE_ADJUSTMENTS.freeride;
     const safetyMax = Math.round(ref.safetyMax * weightFactor);
     return {
-        min: Math.max(4, Math.round(ref.min * weightFactor + skill.minAdd + style.minAdd)),
+        min: Math.max(10, Math.round(ref.min * weightFactor + skill.minAdd + style.minAdd)),
         max: Math.min(safetyMax, Math.round(ref.max * weightFactor + skill.maxAdd + style.maxAdd))
     };
 }
