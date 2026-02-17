@@ -69,7 +69,7 @@ KMH_TO_KTS = 1.852
 BUCKET_WIDTH = 5   # knots
 MAX_BUCKET = 45     # last bucket: 45+ kts
 DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "public", "data")
+OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 
 
 def wind_bucket_edges():

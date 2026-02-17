@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
     spotSelect.addEventListener('change', updateSpotDescription);
     updateSpotDescription();
 
+    // Preload wind data JSON files (non-blocking, falls back to Weibull if unavailable)
+    preloadAllWindData();
+
     // Optimize button
     document.getElementById('optimize-btn').addEventListener('click', runOptimization);
 });
