@@ -417,9 +417,15 @@ body {
 .monthly-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
     font-size: 0.9rem;
     margin-top: 16px;
 }
+
+.monthly-table col.col-month  { width: 30%; }
+.monthly-table col.col-num    { width: 15%; }
+.monthly-table col.col-pct    { width: 15%; }
+.monthly-table col.col-bar    { width: 25%; }
 
 .monthly-table th,
 .monthly-table td {
@@ -457,9 +463,6 @@ body {
     background: var(--lu-border);
     border-radius: 4px;
     overflow: hidden;
-    min-width: 40px;
-    max-width: 100%;
-    width: 100%;
 }
 
 .mini-bar-fill {
@@ -467,7 +470,11 @@ body {
     background: var(--lu-accent);
     border-radius: 4px;
     transition: width 0.4s ease;
-    max-width: 100%;
+}
+
+/* Prevent table from overflowing card */
+.card:has(.monthly-table) {
+    overflow: hidden;
 }
 
 /* ---- CALIBRATION FEEDBACK ---- */
@@ -605,6 +612,11 @@ body {
 
     .monthly-table th,
     .monthly-table td {
-        padding: 6px 8px;
+        padding: 6px 4px;
     }
+
+    .monthly-table col.col-month { width: 28%; }
+    .monthly-table col.col-num   { width: 16%; }
+    .monthly-table col.col-pct   { width: 14%; }
+    .monthly-table col.col-bar   { width: 26%; }
 }
