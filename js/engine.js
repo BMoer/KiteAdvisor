@@ -142,45 +142,57 @@ function bucketsToDailyBins(buckets, numYears, maxKnots) {
 const AVAILABLE_KITE_SIZES = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17];
 
 /**
- * Formula-based wind range model.
+ * Formula: kite_size_m² = (rider_weight_kg / wind_knots) × 2.2
+ * Rearranged: wind_knots = (rider_weight × 2.2) / kite_size
  *
- * Industry standard: kite_size_m² = (rider_weight_kg / wind_kts) × 2.2
- * Rearranged:        ideal_wind   = (rider_weight × 2.2) / kite_size
+ * Wind range per kite:
+ *   min_wind = rider_weight × 2.2 / kite_size
+ *   max_wind = min_wind × 1.6
  *
- * Each kite covers a range around its ideal wind:
- *   min  = ideal × 0.80   (underpowered limit)
- *   max  = ideal × 1.33   (overpowered / comfortable limit)
- *   safe = ideal × 1.55   (absolute safety ceiling)
+ * Each kite covers roughly 8–12 knots of wind range.
  */
-const WIND_RANGE_MIN_FACTOR = 0.80;
-const WIND_RANGE_MAX_FACTOR = 1.33;
-const WIND_RANGE_SAFETY_FACTOR = 1.55;
-const GLOBAL_MIN_WIND = 10;
-
-const SKILL_ADJUSTMENTS = {
-    beginner:     { minAdd: 2,  maxAdd: -3 },
-    intermediate: { minAdd: 1,  maxAdd: -1 },
-    advanced:     { minAdd: 0,  maxAdd: 0 },
-    expert:       { minAdd: -1, maxAdd: 1 }
-};
-
-const STYLE_ADJUSTMENTS = {
-    freeride:  { minAdd: 0, maxAdd: 0 },
-    freestyle: { minAdd: 1, maxAdd: -1 },
-    bigair:    { minAdd: 1, maxAdd: 2 }
-};
+const GLOBAL_MIN_WIND = 12;
 
 function getWindRange(kiteSize, riderWeight, skillLevel, ridingStyle) {
-    const idealWind = (riderWeight * 2.2) / kiteSize;
-    const skill = SKILL_ADJUSTMENTS[skillLevel] || SKILL_ADJUSTMENTS.intermediate;
-    const style = STYLE_ADJUSTMENTS[ridingStyle] || STYLE_ADJUSTMENTS.freeride;
-    const safetyMax = Math.round(idealWind * WIND_RANGE_SAFETY_FACTOR);
+    const minWind = (riderWeight * 2.2) / kiteSize;
+    const maxWind = minWind * 1.6;
     return {
-        min: Math.max(GLOBAL_MIN_WIND,
-                      Math.round(idealWind * WIND_RANGE_MIN_FACTOR) + skill.minAdd + style.minAdd),
-        max: Math.min(safetyMax,
-                      Math.round(idealWind * WIND_RANGE_MAX_FACTOR) + skill.maxAdd + style.maxAdd)
+        min: Math.max(GLOBAL_MIN_WIND, Math.round(minWind)),
+        max: Math.round(maxWind)
     };
+}
+
+/**
+ * Round a computed kite size to the nearest standard size.
+ */
+function roundToStandardSize(size) {
+    let best = AVAILABLE_KITE_SIZES[0];
+    let bestDist = Math.abs(size - best);
+    for (let i = 1; i < AVAILABLE_KITE_SIZES.length; i++) {
+        const dist = Math.abs(size - AVAILABLE_KITE_SIZES[i]);
+        if (dist < bestDist) {
+            bestDist = dist;
+            best = AVAILABLE_KITE_SIZES[i];
+        }
+    }
+    return best;
+}
+
+/**
+ * Compute ideal kite size for a given rider weight and wind speed.
+ */
+function idealKiteSize(riderWeight, windKnots) {
+    return (riderWeight / windKnots) * 2.2;
+}
+
+/**
+ * Get minimum kite size based on rider weight.
+ * 70-85 kg: ≥8m², 85-100 kg: ≥9m², >100 kg: no minimum override
+ */
+function getMinKiteSize(riderWeight) {
+    if (riderWeight >= 85 && riderWeight <= 100) return 9;
+    if (riderWeight >= 70 && riderWeight < 85) return 8;
+    return 5;
 }
 
 // ============================================================
@@ -313,30 +325,119 @@ function hasValidOverlap(kiteSizes, riderWeight, skillLevel, ridingStyle) {
 }
 
 /**
+ * Validate spacing rule: each consecutive kite ≈ previous × 1.33 (±1 standard size).
+ * Kites are sorted large-to-small (descending), so smaller index = bigger kite.
+ * Going from big to small: next size ≈ prev / 1.33 (i.e. smaller kite).
+ * Going from small to big: next size ≈ prev * 1.33.
+ * We check ascending (small to large).
+ */
+function hasValidSpacing(kiteSizes) {
+    if (kiteSizes.length <= 1) return true;
+    var sorted = kiteSizes.slice().sort(function (a, b) { return a - b; });
+    for (var i = 0; i < sorted.length - 1; i++) {
+        var idealNext = sorted[i] * 1.33;
+        var rounded = roundToStandardSize(idealNext);
+        // Allow ±1 standard size from the ideal
+        var idx = AVAILABLE_KITE_SIZES.indexOf(rounded);
+        var allowed = [rounded];
+        if (idx > 0) allowed.push(AVAILABLE_KITE_SIZES[idx - 1]);
+        if (idx < AVAILABLE_KITE_SIZES.length - 1) allowed.push(AVAILABLE_KITE_SIZES[idx + 1]);
+        if (allowed.indexOf(sorted[i + 1]) === -1) return false;
+    }
+    return true;
+}
+
+/**
+ * Validate minimum kite size based on rider weight.
+ */
+function hasValidMinSize(kiteSizes, riderWeight) {
+    var minSize = getMinKiteSize(riderWeight);
+    for (var i = 0; i < kiteSizes.length; i++) {
+        if (kiteSizes[i] < minSize) return false;
+    }
+    return true;
+}
+
+/**
+ * Compute max practical kite size for a given rider weight.
+ * The largest useful kite is the one whose raw min_wind ≥ GLOBAL_MIN_WIND,
+ * i.e. kite_size ≤ weight × 2.2 / GLOBAL_MIN_WIND.
+ * Bigger kites get their range capped and become less efficient.
+ */
+function getMaxPracticalSize(riderWeight) {
+    const raw = (riderWeight * 2.2) / GLOBAL_MIN_WIND;
+    return roundToStandardSize(raw);
+}
+
+/**
  * Find the optimal set of kite sizes that maximizes rideable wind days.
- * Uses brute-force search over all combinations with overlap constraint.
+ * Uses brute-force search over all combinations with constraints:
+ * - Wind ranges must overlap (no gap > 2 knots)
+ * - Spacing rule: next kite ≈ prev × 1.33 (±1 size)
+ * - Max practical kite size based on rider weight
+ *
+ * Tiebreaker: when two combos yield similar rideable days (<0.5 day difference),
+ * prefer the combo with the larger smallest kite (more practical quiver).
  */
 function optimizeKiteSizes(numKites, riderWeight, skillLevel, ridingStyle, spotKey) {
+    const maxSize = getMaxPracticalSize(riderWeight);
+    const allowedSizes = AVAILABLE_KITE_SIZES.filter(function (s) { return s <= maxSize; });
+
     let bestCombo = null;
-    let bestDays = -1;
+    let bestScore = -1;
     let bestResult = null;
 
-    for (const combo of combinations(AVAILABLE_KITE_SIZES, numKites)) {
+    for (const combo of combinations(allowedSizes, numKites)) {
+        if (!hasValidSpacing(combo)) continue;
         if (!hasValidOverlap(combo, riderWeight, skillLevel, ridingStyle)) continue;
         const result = computeRideableDays(combo, riderWeight, skillLevel, ridingStyle, spotKey);
-        if (result.totalDays > bestDays) {
-            bestDays = result.totalDays;
+        // Score: total days + bonus for larger min kite (avoids useless tiny kites)
+        const score = result.totalDays + combo[0] * 0.1;
+        if (score > bestScore) {
+            bestScore = score;
             bestCombo = combo;
             bestResult = result;
         }
     }
 
+    if (!bestCombo) {
+        // Fallback: relax spacing constraint, use full size range
+        for (const combo of combinations(AVAILABLE_KITE_SIZES, numKites)) {
+            if (!hasValidOverlap(combo, riderWeight, skillLevel, ridingStyle)) continue;
+            const result = computeRideableDays(combo, riderWeight, skillLevel, ridingStyle, spotKey);
+            const score = result.totalDays + combo[0] * 0.1;
+            if (score > bestScore) {
+                bestScore = score;
+                bestCombo = combo;
+                bestResult = result;
+            }
+        }
+    }
+
     return {
         kiteSizes: bestCombo,
-        totalRideableDays: Math.round(bestDays),
+        totalRideableDays: Math.round(bestResult.totalDays),
         monthlyRideableDays: bestResult.monthlyDays.map(d => Math.round(d * 10) / 10),
         coverageByKnot: bestResult.coverageByKnot,
         windRanges: bestCombo.map(s => getWindRange(s, riderWeight, skillLevel, ridingStyle)),
         totalDaysInYear: 365
+    };
+}
+
+// Node.js exports for testing
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        AVAILABLE_KITE_SIZES,
+        getWindRange,
+        roundToStandardSize,
+        idealKiteSize,
+        getMinKiteSize,
+        getMaxPracticalSize,
+        hasValidOverlap,
+        hasValidSpacing,
+        hasValidMinSize,
+        optimizeKiteSizes,
+        computeRideableDays,
+        SPOTS
     };
 }
