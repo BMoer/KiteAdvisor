@@ -80,6 +80,17 @@ const SPOTS = {
             { k: 2.9, mean: 21 }, { k: 3.0, mean: 22 }, { k: 3.1, mean: 23 }, { k: 3.0, mean: 22 },
             { k: 2.8, mean: 20 }, { k: 2.5, mean: 17 }, { k: 2.3, mean: 15 }, { k: 2.2, mean: 14 }
         ]
+    },
+    watamu: {
+        name: 'Watamu',
+        country: 'Kenia',
+        flag: '\u{1F1F0}\u{1F1EA}',
+        description: 'Tropischer Kite-Spot an der kenianischen K\u00fcste. Zwei Windsaisons: Juni\u2013September (Kusi, S\u00fcdost) und Dezember\u2013Februar (Kaskazi, Nordost). Warmes Wasser, Riff-gesch\u00fctzte Lagune, ideal f\u00fcr Freeride und Freestyle.',
+        windParams: [
+            { k: 2.3, mean: 14 }, { k: 2.2, mean: 13 }, { k: 2.0, mean: 10 }, { k: 1.8, mean: 8 },
+            { k: 1.7, mean: 7 }, { k: 2.0, mean: 12 }, { k: 2.3, mean: 16 }, { k: 2.4, mean: 17 },
+            { k: 2.3, mean: 15 }, { k: 2.0, mean: 10 }, { k: 1.8, mean: 8 }, { k: 2.1, mean: 12 }
+        ]
     }
 };
 

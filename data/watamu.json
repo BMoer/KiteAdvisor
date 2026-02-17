@@ -1,11 +1,11 @@
 {
-  "spot": "lo_stagnone",
-  "label": "Lo Stagnone (Sizilien)",
-  "lat": 37.87,
-  "lon": 12.47,
-  "station_id": "16429",
-  "station_name": "Trapani / Birgi",
-  "station_distance_km": 5.8,
+  "spot": "watamu",
+  "label": "Watamu, Kenya",
+  "lat": -3.35,
+  "lon": 40.02,
+  "station_id": "63799",
+  "station_name": "Malindi",
+  "station_distance_km": 15.7,
   "years_covered": [
     2021,
     2022,
@@ -14,53 +14,53 @@
     2025,
     2026
   ],
-  "total_hours": 43825,
-  "missing_pct": 0.0,
+  "total_hours": 43770,
+  "missing_pct": 0.1,
   "wind_distribution_annual": [
     {
       "min_kts": 0,
       "max_kts": 5,
-      "hours": 13431
+      "hours": 7846
     },
     {
       "min_kts": 5,
       "max_kts": 10,
-      "hours": 17670
+      "hours": 18925
     },
     {
       "min_kts": 10,
       "max_kts": 15,
-      "hours": 8922
+      "hours": 11528
     },
     {
       "min_kts": 15,
       "max_kts": 20,
-      "hours": 2587
+      "hours": 4026
     },
     {
       "min_kts": 20,
       "max_kts": 25,
-      "hours": 922
+      "hours": 1282
     },
     {
       "min_kts": 25,
       "max_kts": 30,
-      "hours": 247
+      "hours": 151
     },
     {
       "min_kts": 30,
       "max_kts": 35,
-      "hours": 39
+      "hours": 1
     },
     {
       "min_kts": 35,
       "max_kts": 40,
-      "hours": 5
+      "hours": 0
     },
     {
       "min_kts": 40,
       "max_kts": 45,
-      "hours": 1
+      "hours": 0
     },
     {
       "min_kts": 45,
@@ -73,42 +73,42 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 807
+        "hours": 680
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1666
+        "hours": 1678
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 791
+        "hours": 1043
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 267
+        "hours": 281
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 134
+        "hours": 39
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 48
+        "hours": 0
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 7
+        "hours": 0
       },
       {
         "min_kts": 35,
         "max_kts": 40,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 40,
@@ -125,32 +125,32 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 1034
+        "hours": 766
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1337
+        "hours": 1505
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 556
+        "hours": 939
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 311
+        "hours": 160
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 138
+        "hours": 12
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 7
+        "hours": 1
       },
       {
         "min_kts": 30,
@@ -165,7 +165,7 @@
       {
         "min_kts": 40,
         "max_kts": 45,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 45,
@@ -177,37 +177,37 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 921
+        "hours": 989
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1467
+        "hours": 1796
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 744
+        "hours": 729
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 333
+        "hours": 172
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 179
+        "hours": 21
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 65
+        "hours": 1
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 11
+        "hours": 0
       },
       {
         "min_kts": 35,
@@ -229,37 +229,37 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 956
+        "hours": 650
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1443
+        "hours": 1581
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 772
+        "hours": 809
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 269
+        "hours": 336
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 115
+        "hours": 193
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 40
+        "hours": 29
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 5
+        "hours": 0
       },
       {
         "min_kts": 35,
@@ -281,42 +281,42 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 1225
+        "hours": 267
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1561
+        "hours": 1274
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 732
+        "hours": 1179
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 135
+        "hours": 661
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 40
+        "hours": 280
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 13
+        "hours": 49
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 10
+        "hours": 1
       },
       {
         "min_kts": 35,
         "max_kts": 40,
-        "hours": 4
+        "hours": 0
       },
       {
         "min_kts": 40,
@@ -333,32 +333,32 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 1218
+        "hours": 367
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1631
+        "hours": 1475
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 661
+        "hours": 1060
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 81
+        "hours": 427
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 8
+        "hours": 244
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 1
+        "hours": 25
       },
       {
         "min_kts": 30,
@@ -385,32 +385,32 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 1147
+        "hours": 214
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1401
+        "hours": 1432
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 958
+        "hours": 1170
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 198
+        "hours": 613
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 15
+        "hours": 259
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 1
+        "hours": 31
       },
       {
         "min_kts": 30,
@@ -437,27 +437,131 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 1345
+        "hours": 233
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1349
+        "hours": 1586
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 862
+        "hours": 1262
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 141
+        "hours": 496
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 21
+        "hours": 118
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 9
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 0
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "9": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 408
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1333
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 1288
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 503
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 55
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 30,
+        "hours": 4
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 35,
+        "hours": 0
+      },
+      {
+        "min_kts": 35,
+        "max_kts": 40,
+        "hours": 0
+      },
+      {
+        "min_kts": 40,
+        "max_kts": 45,
+        "hours": 0
+      },
+      {
+        "min_kts": 45,
+        "max_kts": 50,
+        "hours": 0
+      }
+    ],
+    "10": [
+      {
+        "min_kts": 0,
+        "max_kts": 5,
+        "hours": 663
+      },
+      {
+        "min_kts": 5,
+        "max_kts": 10,
+        "hours": 1724
+      },
+      {
+        "min_kts": 10,
+        "max_kts": 15,
+        "hours": 1010
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 20,
+        "hours": 264
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 25,
+        "hours": 57
       },
       {
         "min_kts": 25,
@@ -485,145 +589,41 @@
         "hours": 0
       }
     ],
-    "9": [
-      {
-        "min_kts": 0,
-        "max_kts": 5,
-        "hours": 1145
-      },
-      {
-        "min_kts": 5,
-        "max_kts": 10,
-        "hours": 1400
-      },
-      {
-        "min_kts": 10,
-        "max_kts": 15,
-        "hours": 857
-      },
-      {
-        "min_kts": 15,
-        "max_kts": 20,
-        "hours": 166
-      },
-      {
-        "min_kts": 20,
-        "max_kts": 25,
-        "hours": 30
-      },
-      {
-        "min_kts": 25,
-        "max_kts": 30,
-        "hours": 1
-      },
-      {
-        "min_kts": 30,
-        "max_kts": 35,
-        "hours": 0
-      },
-      {
-        "min_kts": 35,
-        "max_kts": 40,
-        "hours": 0
-      },
-      {
-        "min_kts": 40,
-        "max_kts": 45,
-        "hours": 0
-      },
-      {
-        "min_kts": 45,
-        "max_kts": 50,
-        "hours": 0
-      }
-    ],
-    "10": [
-      {
-        "min_kts": 0,
-        "max_kts": 5,
-        "hours": 1300
-      },
-      {
-        "min_kts": 5,
-        "max_kts": 10,
-        "hours": 1503
-      },
-      {
-        "min_kts": 10,
-        "max_kts": 15,
-        "hours": 675
-      },
-      {
-        "min_kts": 15,
-        "max_kts": 20,
-        "hours": 187
-      },
-      {
-        "min_kts": 20,
-        "max_kts": 25,
-        "hours": 42
-      },
-      {
-        "min_kts": 25,
-        "max_kts": 30,
-        "hours": 13
-      },
-      {
-        "min_kts": 30,
-        "max_kts": 35,
-        "hours": 0
-      },
-      {
-        "min_kts": 35,
-        "max_kts": 40,
-        "hours": 0
-      },
-      {
-        "min_kts": 40,
-        "max_kts": 45,
-        "hours": 0
-      },
-      {
-        "min_kts": 45,
-        "max_kts": 50,
-        "hours": 0
-      }
-    ],
     "11": [
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 1125
+        "hours": 1276
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1491
+        "hours": 1761
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 641
+        "hours": 518
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 236
+        "hours": 44
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 85
+        "hours": 0
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 21
+        "hours": 0
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 35,
@@ -645,37 +645,37 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 1208
+        "hours": 1333
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1421
+        "hours": 1780
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 673
+        "hours": 521
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 263
+        "hours": 69
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 115
+        "hours": 4
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 35
+        "hours": 0
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 5
+        "hours": 0
       },
       {
         "min_kts": 35,

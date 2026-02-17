@@ -105,6 +105,9 @@ function displayResults(result, weight, spotKey, numKites) {
     document.getElementById('total-days').textContent = result.totalRideableDays;
     document.getElementById('coverage-pct').textContent = coveragePct + '%';
 
+    // Wind data source info
+    renderWindDataInfo(spotKey);
+
     // Charts
     renderWindChart(result, spotKey);
     renderMonthlyChart(result);
@@ -119,6 +122,42 @@ function displayResults(result, weight, spotKey, numKites) {
     setTimeout(() => {
         resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
+}
+
+function renderWindDataInfo(spotKey) {
+    var el = document.getElementById('wind-data-info');
+    var wd = _windDataCache[spotKey];
+    if (!wd) {
+        el.classList.add('hidden');
+        return;
+    }
+
+    var stationName = wd.station_name || 'Unbekannt';
+    var distKm = wd.station_distance_km || 0;
+    var totalHours = wd.total_hours || 0;
+    var missingPct = wd.missing_pct || 0;
+    var years = wd.years_covered || [];
+    var isSynthetic = wd.station_id === 'synthetic';
+
+    var html = '';
+    if (isSynthetic) {
+        html = 'Basierend auf statistischem Windmodell (Weibull-Verteilung). ' +
+               'Keine Wetterstationsdaten verf\u00fcgbar f\u00fcr diesen Spot.';
+    } else {
+        html = 'Basierend auf ' + totalHours.toLocaleString('de-DE') +
+               ' Stunden Wetterdaten von Station <strong>' + stationName + '</strong>' +
+               ' (' + distKm + ' km entfernt)';
+        if (years.length > 0) {
+            html += ', ' + years[0] + '\u2013' + years[years.length - 1];
+        }
+        html += '.';
+        if (missingPct > 10) {
+            html += ' <span class="data-warning">Achtung: ' + missingPct + '% fehlende Daten.</span>';
+        }
+    }
+
+    el.innerHTML = html;
+    el.classList.remove('hidden');
 }
 
 function renderWindChart(result, spotKey) {
@@ -318,7 +357,7 @@ function renderMonthlyTable(result) {
         totalDays += total;
 
         const tr = document.createElement('tr');
-        const barWidth = Math.round((rideable / 31) * 100);
+        const barWidth = Math.min(100, Math.round((rideable / total) * 100));
 
         tr.innerHTML =
             '<td>' + MONTH_NAMES_FULL_DE[m] + '</td>' +

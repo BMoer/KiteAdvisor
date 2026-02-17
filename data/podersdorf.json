@@ -3,58 +3,59 @@
   "label": "Podersdorf am Neusiedlersee",
   "lat": 47.86,
   "lon": 16.83,
-  "station_id": "synthetic",
-  "station_name": "Weibull model (synthetic)",
-  "station_distance_km": 0,
+  "station_id": "11194",
+  "station_name": "Neusiedl am See",
+  "station_distance_km": 9.9,
   "years_covered": [
     2021,
     2022,
     2023,
     2024,
-    2025
+    2025,
+    2026
   ],
-  "total_hours": 43800,
-  "missing_pct": 0,
+  "total_hours": 41874,
+  "missing_pct": 4.5,
   "wind_distribution_annual": [
     {
       "min_kts": 0,
       "max_kts": 5,
-      "hours": 9684
+      "hours": 14886
     },
     {
       "min_kts": 5,
       "max_kts": 10,
-      "hours": 16627
+      "hours": 22648
     },
     {
       "min_kts": 10,
       "max_kts": 15,
-      "hours": 11195
+      "hours": 3948
     },
     {
       "min_kts": 15,
       "max_kts": 20,
-      "hours": 4642
+      "hours": 387
     },
     {
       "min_kts": 20,
       "max_kts": 25,
-      "hours": 1331
+      "hours": 5
     },
     {
       "min_kts": 25,
       "max_kts": 30,
-      "hours": 275
+      "hours": 0
     },
     {
       "min_kts": 30,
       "max_kts": 35,
-      "hours": 42
+      "hours": 0
     },
     {
       "min_kts": 35,
       "max_kts": 40,
-      "hours": 5
+      "hours": 0
     },
     {
       "min_kts": 40,
@@ -72,32 +73,32 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 1329
+        "hours": 907
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1593
+        "hours": 1613
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 646
+        "hours": 475
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 135
+        "hours": 86
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 16
+        "hours": 0
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 30,
@@ -124,32 +125,32 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 935
+        "hours": 732
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1430
+        "hours": 1589
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 752
+        "hours": 320
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 206
+        "hours": 71
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 32
+        "hours": 0
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 3
+        "hours": 0
       },
       {
         "min_kts": 30,
@@ -176,37 +177,37 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 801
+        "hours": 1065
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1509
+        "hours": 1852
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 991
+        "hours": 374
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 343
+        "hours": 53
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 68
+        "hours": 0
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 8
+        "hours": 0
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 35,
@@ -228,42 +229,42 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 539
+        "hours": 863
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1180
+        "hours": 2120
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 1045
+        "hours": 584
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 567
+        "hours": 33
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 206
+        "hours": 0
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 52
+        "hours": 0
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 9
+        "hours": 0
       },
       {
         "min_kts": 35,
         "max_kts": 40,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 40,
@@ -280,42 +281,42 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 431
+        "hours": 1201
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1096
+        "hours": 2238
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 1115
+        "hours": 270
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 692
+        "hours": 11
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 286
+        "hours": 0
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 81
+        "hours": 0
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 16
+        "hours": 0
       },
       {
         "min_kts": 35,
         "max_kts": 40,
-        "hours": 2
+        "hours": 0
       },
       {
         "min_kts": 40,
@@ -332,42 +333,42 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 495
+        "hours": 1363
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1196
+        "hours": 1860
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 1095
+        "hours": 108
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 577
+        "hours": 6
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 191
+        "hours": 0
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 41
+        "hours": 0
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 6
+        "hours": 0
       },
       {
         "min_kts": 35,
         "max_kts": 40,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 40,
@@ -384,37 +385,37 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 663
+        "hours": 1099
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1361
+        "hours": 2318
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 1061
+        "hours": 297
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 475
+        "hours": 6
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 133
+        "hours": 0
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 24
+        "hours": 0
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 3
+        "hours": 0
       },
       {
         "min_kts": 35,
@@ -436,37 +437,37 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 854
+        "hours": 1613
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1461
+        "hours": 1877
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 951
+        "hours": 226
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 356
+        "hours": 4
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 84
+        "hours": 0
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 13
+        "hours": 0
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 35,
@@ -488,37 +489,37 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 642
+        "hours": 1561
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1317
+        "hours": 1716
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 1026
+        "hours": 269
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 459
+        "hours": 49
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 129
+        "hours": 5
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 24
+        "hours": 0
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 3
+        "hours": 0
       },
       {
         "min_kts": 35,
@@ -540,37 +541,37 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 663
+        "hours": 1474
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1361
+        "hours": 1986
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 1061
+        "hours": 256
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 475
+        "hours": 4
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 133
+        "hours": 0
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 24
+        "hours": 0
       },
       {
         "min_kts": 30,
         "max_kts": 35,
-        "hours": 3
+        "hours": 0
       },
       {
         "min_kts": 35,
@@ -592,32 +593,32 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 1002
+        "hours": 1548
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1532
+        "hours": 1720
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 806
+        "hours": 319
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 221
+        "hours": 13
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 35
+        "hours": 0
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 3
+        "hours": 0
       },
       {
         "min_kts": 30,
@@ -644,32 +645,32 @@
       {
         "min_kts": 0,
         "max_kts": 5,
-        "hours": 1329
+        "hours": 1460
       },
       {
         "min_kts": 5,
         "max_kts": 10,
-        "hours": 1593
+        "hours": 1759
       },
       {
         "min_kts": 10,
         "max_kts": 15,
-        "hours": 646
+        "hours": 450
       },
       {
         "min_kts": 15,
         "max_kts": 20,
-        "hours": 135
+        "hours": 51
       },
       {
         "min_kts": 20,
         "max_kts": 25,
-        "hours": 16
+        "hours": 0
       },
       {
         "min_kts": 25,
         "max_kts": 30,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 30,

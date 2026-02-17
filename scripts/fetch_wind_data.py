@@ -60,6 +60,16 @@ SPOTS = [
             (3.1, 23), (3.0, 22), (2.8, 20), (2.5, 17), (2.3, 15), (2.2, 14),
         ],
     },
+    {
+        "slug": "watamu",
+        "label": "Watamu, Kenya",
+        "lat": -3.35,
+        "lon": 40.02,
+        "weibull": [
+            (2.3, 14), (2.2, 13), (2.0, 10), (1.8, 8), (1.7, 7), (2.0, 12),
+            (2.3, 16), (2.4, 17), (2.3, 15), (2.0, 10), (1.8, 8), (2.1, 12),
+        ],
+    },
 ]
 
 # ── Parameters ──────────────────────────────────────────────────────
@@ -196,6 +206,7 @@ def fetch_real(spot):
     """Fetch wind data from Meteostat for a single spot."""
     try:
         import meteostat as ms
+        ms.config.block_large_requests = False
     except ImportError:
         print("  ERROR: meteostat not installed. Run: pip install meteostat")
         return None
@@ -211,8 +222,8 @@ def fetch_real(spot):
     start = datetime(end.year - YEARS_BACK, 1, 1)
 
     # Find nearest station
-    stations_db = ms.stations.nearby(lat, lon)
-    nearby = stations_db.fetch(5)
+    point = ms.Point(lat, lon)
+    nearby = ms.stations.nearby(point, radius=100000, limit=5)
     if nearby is None or nearby.empty:
         print(f"  WARNING: No station found, skipping.")
         return None
@@ -220,22 +231,22 @@ def fetch_real(spot):
     station_id = nearby.index[0]
     best = nearby.iloc[0]
     station_name = best.get("name", "Unknown")
-    station_dist = round(haversine_km(lat, lon, best["latitude"], best["longitude"]), 1)
+    # Distance is returned by meteostat in the 'distance' column (meters)
+    station_dist = round(best.get("distance", 0) / 1000, 1)
 
     print(f"  Station: {station_name} ({station_id}), {station_dist} km away")
     print(f"  Period: {start.date()} to {end.date()}")
 
-    # Fetch hourly data via Point (Meteostat v2 API)
-    point = ms.Point(lat, lon)
-    ts = ms.hourly(point, start, end)
-    data = ts.fetch()
+    # Fetch hourly data via station ID
+    ts = ms.hourly(station_id, start, end)
+    data = ts.fetch() if ts is not None else None
 
     if data is None or data.empty:
         print(f"  WARNING: No hourly data returned, skipping.")
         return None
 
     total_hours_expected = YEARS_BACK * 365.25 * 24
-    wind_rows = data["wspd"].notna().sum()
+    wind_rows = int(data["wspd"].notna().sum())
     missing_pct = round((1 - wind_rows / total_hours_expected) * 100, 1)
 
     print(f"  Rows: {len(data)}, with wind: {wind_rows}, missing: {missing_pct}%")

@@ -1,0 +1,11 @@
+{
+  "name": "kite-advisor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kite Size Optimizer — find optimal kite sizes for your homespot",
+  "scripts": {
+    "update-wind-data": "python3 scripts/fetch_wind_data.py",
+    "update-wind-data:synthetic": "python3 scripts/fetch_wind_data.py --synthetic",
+    "test": "node tests/engine.test.js"
+  }
+}
