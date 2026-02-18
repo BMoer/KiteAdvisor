@@ -30,7 +30,7 @@
 
 html, body {
     overflow-x: hidden;
-    max-width: 100vw;
+    max-width: 100%;
 }
 
 body {
@@ -141,6 +141,9 @@ body {
     margin-bottom: 24px;
     border: 1px solid var(--lu-border);
     overflow: hidden;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .card-title {
@@ -164,6 +167,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    min-width: 0;
 }
 
 .form-group.full-width {
@@ -326,6 +330,8 @@ body {
     background: rgba(232, 115, 74, 0.08);
     border-radius: 10px;
     border: 1px solid rgba(232, 115, 74, 0.2);
+    min-width: 0;
+    overflow: hidden;
 }
 
 .stat-value {
@@ -350,6 +356,8 @@ body {
     gap: 12px;
     justify-content: center;
     margin-bottom: 28px;
+    min-width: 0;
+    max-width: 100%;
 }
 
 .kite-card {
@@ -416,11 +424,14 @@ body {
     height: 340px;
     margin: 20px 0;
     overflow: hidden;
+    width: 100%;
     max-width: 100%;
+    min-width: 0;
 }
 
 .chart-container canvas {
     max-width: 100% !important;
+    width: 100% !important;
 }
 
 .chart-container.monthly {
@@ -430,6 +441,7 @@ body {
 /* Monthly table */
 .monthly-table {
     width: 100%;
+    max-width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
     font-size: 0.9rem;
@@ -486,13 +498,12 @@ body {
     transition: width 0.4s ease;
 }
 
-/* Monthly table cells: clip any overflowing content */
+/* Monthly table cells: constrain content within fixed columns */
 .monthly-table td,
 .monthly-table th {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-width: 0;
 }
 
 /* ---- CALIBRATION FEEDBACK ---- */
