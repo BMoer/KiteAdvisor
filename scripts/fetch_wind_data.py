@@ -198,6 +198,7 @@ def generate_synthetic(spot):
         "station_name": "Weibull model (synthetic)",
         "station_distance_km": 0,
         "years_covered": years_covered,
+        "num_years": YEARS_BACK,
         "total_hours": total_hours,
         "missing_pct": 0,
         "wind_distribution_annual": wind_annual,
@@ -267,6 +268,13 @@ def fetch_real(spot):
         print(f"  WARNING: No hourly data returned, skipping.")
         return None
 
+    # Meteostat may include the endpoint exactly at `end`.
+    # Keep data strictly in [start, end).
+    data = data[data.index < end]
+    if data.empty:
+        print(f"  WARNING: Hourly data empty after date-window filtering, skipping.")
+        return None
+
     total_hours_expected = YEARS_BACK * 365.25 * 24
     wind_rows = data["wspd"].notna().sum()
     missing_pct = round((1 - wind_rows / total_hours_expected) * 100, 1)
@@ -276,7 +284,7 @@ def fetch_real(spot):
     # Convert km/h → knots
     data["wind_kts"] = data["wspd"] / KMH_TO_KTS
 
-    years_covered = sorted(data.index.year.unique().tolist())
+    years_covered = list(range(start.year, end.year))
 
     bins = wind_bin_edges()
 
@@ -329,6 +337,7 @@ def fetch_real(spot):
         "station_name": station_name,
         "station_distance_km": station_dist,
         "years_covered": years_covered,
+        "num_years": YEARS_BACK,
         "total_hours": int(wind_rows),
         "missing_pct": missing_pct,
         "wind_distribution_annual": wind_annual,

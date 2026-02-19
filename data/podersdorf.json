@@ -11,10 +11,10 @@
     2022,
     2023,
     2024,
-    2025,
-    2026
+    2025
   ],
-  "total_hours": 41874,
+  "num_years": 5,
+  "total_hours": 41873,
   "missing_pct": 4.5,
   "wind_distribution_annual": [
     {
@@ -85,7 +85,7 @@
     {
       "min_kts": 13,
       "max_kts": 14,
-      "hours": 1173
+      "hours": 1172
     },
     {
       "min_kts": 14,
@@ -318,7 +318,7 @@
       {
         "min_kts": 13,
         "max_kts": 14,
-        "hours": 205
+        "hours": 204
       },
       {
         "min_kts": 14,

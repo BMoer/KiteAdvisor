@@ -106,6 +106,7 @@ function bucketsToDailyBins(buckets, numYears, maxKnots) {
 }
 
 function getNumYears(wd) {
+    if (wd && Number.isFinite(wd.num_years) && wd.num_years > 0) return wd.num_years;
     return wd && wd.years_covered && wd.years_covered.length ? wd.years_covered.length : 5;
 }
 
