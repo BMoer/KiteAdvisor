@@ -264,41 +264,21 @@ function computeRideableDays(kiteSizes, riderWeight, skillLevel, ridingStyle, sp
     var maxKnots = 45;
     var coverageByKnot = new Array(maxKnots + 1).fill(0);
 
-    var wd = _windDataCache[spotKey];
-    var useJson = wd && wd.wind_distribution_monthly;
-
+    // Always use Weibull model for rideable-day estimation.
+    // The per-spot Weibull params are calibrated for actual kiting conditions,
+    // whereas the JSON station data (Meteostat) comes from remote weather stations
+    // that underreport local wind (thermal effects, strait acceleration, etc.).
+    // JSON data is still used for the wind-distribution chart via computeYearlyWindDistribution.
     for (var m = 0; m < 12; m++) {
         var monthRideable = 0;
-
-        if (useJson) {
-            var numYears = wd.years_covered ? wd.years_covered.length : 5;
-            var monthBuckets = wd.wind_distribution_monthly[String(m + 1)];
-            var bins = bucketsToDailyBins(monthBuckets, numYears, maxKnots);
-            // bins[v] = days in this month with wind speed v (per year average)
-            // But this is annual-averaged monthly days; divide by 1 since bucketsToDailyBins
-            // already gives per-year values. However the annual data sums all months.
-            // For monthly: we need days in THIS month. The bucket hours are summed over
-            // numYears worth of this specific month, so days = hours / numYears / 24 per knot.
-            // bucketsToDailyBins already does this, but it gives days-per-year.
-            // For a single month, the "days per year" from that month's data IS the
-            // average days in that month, because the hours only cover that month.
-            for (var v = 0; v <= maxKnots; v++) {
-                var inRange = ranges.some(function (r) { return v >= r.min && v <= r.max; });
-                if (inRange) {
-                    monthRideable += bins[v];
-                    coverageByKnot[v] += bins[v];
-                }
-            }
-        } else {
-            var params = spot.windParams[m];
-            var lambda = weibullScale(params.mean, params.k);
-            for (var v = 0; v <= maxKnots; v++) {
-                var prob = weibullProbBetween(v, v + 1, params.k, lambda);
-                var inRange = ranges.some(function (r) { return v >= r.min && v <= r.max; });
-                if (inRange) {
-                    monthRideable += DAYS_IN_MONTH[m] * prob;
-                    coverageByKnot[v] += DAYS_IN_MONTH[m] * prob;
-                }
+        var params = spot.windParams[m];
+        var lambda = weibullScale(params.mean, params.k);
+        for (var v = 0; v <= maxKnots; v++) {
+            var prob = weibullProbBetween(v, v + 1, params.k, lambda);
+            var inRange = ranges.some(function (r) { return v >= r.min && v <= r.max; });
+            if (inRange) {
+                monthRideable += DAYS_IN_MONTH[m] * prob;
+                coverageByKnot[v] += DAYS_IN_MONTH[m] * prob;
             }
         }
 
