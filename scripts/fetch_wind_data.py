@@ -66,19 +66,14 @@ SPOTS = [
 
 YEARS_BACK = 5
 KMH_TO_KTS = 1.852
-BUCKET_WIDTH = 5   # knots
-MAX_BUCKET = 45     # last bucket: 45+ kts
+MAX_KNOT = 45
 DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 
 
-def wind_bucket_edges():
-    """Return list of (min_kts, max_kts) tuples for histogram buckets."""
-    edges = []
-    for lo in range(0, MAX_BUCKET, BUCKET_WIDTH):
-        edges.append((lo, lo + BUCKET_WIDTH))
-    edges.append((MAX_BUCKET, MAX_BUCKET + BUCKET_WIDTH))
-    return edges
+def wind_bin_edges():
+    """Return list of 1-knot bins [(0,1), (1,2), ..., (MAX_KNOT, MAX_KNOT+1)]."""
+    return [(kts, kts + 1) for kts in range(0, MAX_KNOT + 1)]
 
 
 # ── Weibull helpers for synthetic mode ──────────────────────────────
@@ -129,11 +124,11 @@ def generate_synthetic(spot):
     total_hours_per_year = sum(d * 24 for d in DAYS_IN_MONTH)
     total_hours = total_hours_per_year * YEARS_BACK
 
-    buckets = wind_bucket_edges()
+    bins = wind_bin_edges()
 
     # Annual distribution: sum across all months
     wind_annual = []
-    for lo, hi in buckets:
+    for lo, hi in bins:
         hours = 0
         for m in range(12):
             k, mean = weibull[m]
@@ -152,7 +147,7 @@ def generate_synthetic(spot):
         k, mean = weibull[m]
         lam = weibull_scale(mean, k)
         month_buckets = []
-        for lo, hi in buckets:
+        for lo, hi in bins:
             prob = weibull_prob_between(lo, hi, k, lam)
             hours = DAYS_IN_MONTH[m] * 24 * prob * YEARS_BACK
             month_buckets.append({
@@ -199,6 +194,12 @@ def fetch_real(spot):
     except ImportError:
         print("  ERROR: meteostat not installed. Run: pip install meteostat")
         return None
+    try:
+        import certifi
+        os.environ.setdefault("SSL_CERT_FILE", certifi.where())
+    except Exception:
+        pass
+    ms.config.block_large_requests = False
 
     slug = spot["slug"]
     label = spot["label"]
@@ -211,8 +212,11 @@ def fetch_real(spot):
     start = datetime(end.year - YEARS_BACK, 1, 1)
 
     # Find nearest station
-    stations_db = ms.stations.nearby(lat, lon)
-    nearby = stations_db.fetch(5)
+    stations_db = ms.stations.nearby(ms.Point(lat, lon))
+    if hasattr(stations_db, "fetch"):
+        nearby = stations_db.fetch(5)
+    else:
+        nearby = stations_db.head(5)
     if nearby is None or nearby.empty:
         print(f"  WARNING: No station found, skipping.")
         return None
@@ -225,9 +229,8 @@ def fetch_real(spot):
     print(f"  Station: {station_name} ({station_id}), {station_dist} km away")
     print(f"  Period: {start.date()} to {end.date()}")
 
-    # Fetch hourly data via Point (Meteostat v2 API)
-    point = ms.Point(lat, lon)
-    ts = ms.hourly(point, start, end)
+    # Fetch hourly data via selected station ID (point-based hourly can return empty)
+    ts = ms.hourly(str(station_id), start, end)
     data = ts.fetch()
 
     if data is None or data.empty:
@@ -245,11 +248,11 @@ def fetch_real(spot):
 
     years_covered = sorted(data.index.year.unique().tolist())
 
-    buckets = wind_bucket_edges()
+    bins = wind_bin_edges()
 
     # Annual distribution
     wind_annual = []
-    for lo, hi in buckets:
+    for lo, hi in bins:
         count = int(((data["wind_kts"] >= lo) & (data["wind_kts"] < hi)).sum())
         wind_annual.append({"min_kts": lo, "max_kts": hi, "hours": count})
 
@@ -258,7 +261,7 @@ def fetch_real(spot):
     for month in range(1, 13):
         month_data = data[data.index.month == month]
         month_buckets = []
-        for lo, hi in buckets:
+        for lo, hi in bins:
             count = int(((month_data["wind_kts"] >= lo) & (month_data["wind_kts"] < hi)).sum())
             month_buckets.append({"min_kts": lo, "max_kts": hi, "hours": count})
         wind_monthly[str(month)] = month_buckets
@@ -294,12 +297,15 @@ def main():
 
     results = []
     for spot in SPOTS:
+        out_path = os.path.join(OUTPUT_DIR, f"{spot['slug']}.json")
         result = generate_synthetic(spot) if synthetic else fetch_real(spot)
         if result is None:
             print(f"  SKIPPED: {spot['label']}")
+            if not synthetic and os.path.exists(out_path):
+                os.remove(out_path)
+                print(f"  Removed stale file: {out_path}")
             continue
 
-        out_path = os.path.join(OUTPUT_DIR, f"{spot['slug']}.json")
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(result, f, indent=2, ensure_ascii=False)
         print(f"  Written: {out_path}")

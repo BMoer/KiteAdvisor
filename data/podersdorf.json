@@ -3,67 +3,248 @@
   "label": "Podersdorf am Neusiedlersee",
   "lat": 47.86,
   "lon": 16.83,
-  "station_id": "synthetic",
-  "station_name": "Weibull model (synthetic)",
-  "station_distance_km": 0,
+  "station_id": "11194",
+  "station_name": "Neusiedl am See",
+  "station_distance_km": 9.9,
   "years_covered": [
     2021,
     2022,
     2023,
     2024,
-    2025
+    2025,
+    2026
   ],
-  "total_hours": 43800,
-  "missing_pct": 0,
+  "total_hours": 41874,
+  "missing_pct": 4.5,
   "wind_distribution_annual": [
     {
       "min_kts": 0,
+      "max_kts": 1,
+      "hours": 1154
+    },
+    {
+      "min_kts": 1,
+      "max_kts": 2,
+      "hours": 2301
+    },
+    {
+      "min_kts": 2,
+      "max_kts": 3,
+      "hours": 5514
+    },
+    {
+      "min_kts": 3,
+      "max_kts": 4,
+      "hours": 5904
+    },
+    {
+      "min_kts": 4,
       "max_kts": 5,
-      "hours": 9684
+      "hours": 13
     },
     {
       "min_kts": 5,
+      "max_kts": 6,
+      "hours": 9600
+    },
+    {
+      "min_kts": 6,
+      "max_kts": 7,
+      "hours": 15
+    },
+    {
+      "min_kts": 7,
+      "max_kts": 8,
+      "hours": 7685
+    },
+    {
+      "min_kts": 8,
+      "max_kts": 9,
+      "hours": 13
+    },
+    {
+      "min_kts": 9,
       "max_kts": 10,
-      "hours": 16627
+      "hours": 5335
     },
     {
       "min_kts": 10,
+      "max_kts": 11,
+      "hours": 0
+    },
+    {
+      "min_kts": 11,
+      "max_kts": 12,
+      "hours": 2774
+    },
+    {
+      "min_kts": 12,
+      "max_kts": 13,
+      "hours": 0
+    },
+    {
+      "min_kts": 13,
+      "max_kts": 14,
+      "hours": 1173
+    },
+    {
+      "min_kts": 14,
       "max_kts": 15,
-      "hours": 11195
+      "hours": 1
     },
     {
       "min_kts": 15,
+      "max_kts": 16,
+      "hours": 310
+    },
+    {
+      "min_kts": 16,
+      "max_kts": 17,
+      "hours": 0
+    },
+    {
+      "min_kts": 17,
+      "max_kts": 18,
+      "hours": 66
+    },
+    {
+      "min_kts": 18,
+      "max_kts": 19,
+      "hours": 0
+    },
+    {
+      "min_kts": 19,
       "max_kts": 20,
-      "hours": 4642
+      "hours": 11
     },
     {
       "min_kts": 20,
+      "max_kts": 21,
+      "hours": 0
+    },
+    {
+      "min_kts": 21,
+      "max_kts": 22,
+      "hours": 3
+    },
+    {
+      "min_kts": 22,
+      "max_kts": 23,
+      "hours": 2
+    },
+    {
+      "min_kts": 23,
+      "max_kts": 24,
+      "hours": 0
+    },
+    {
+      "min_kts": 24,
       "max_kts": 25,
-      "hours": 1331
+      "hours": 0
     },
     {
       "min_kts": 25,
+      "max_kts": 26,
+      "hours": 0
+    },
+    {
+      "min_kts": 26,
+      "max_kts": 27,
+      "hours": 0
+    },
+    {
+      "min_kts": 27,
+      "max_kts": 28,
+      "hours": 0
+    },
+    {
+      "min_kts": 28,
+      "max_kts": 29,
+      "hours": 0
+    },
+    {
+      "min_kts": 29,
       "max_kts": 30,
-      "hours": 275
+      "hours": 0
     },
     {
       "min_kts": 30,
+      "max_kts": 31,
+      "hours": 0
+    },
+    {
+      "min_kts": 31,
+      "max_kts": 32,
+      "hours": 0
+    },
+    {
+      "min_kts": 32,
+      "max_kts": 33,
+      "hours": 0
+    },
+    {
+      "min_kts": 33,
+      "max_kts": 34,
+      "hours": 0
+    },
+    {
+      "min_kts": 34,
       "max_kts": 35,
-      "hours": 42
+      "hours": 0
     },
     {
       "min_kts": 35,
+      "max_kts": 36,
+      "hours": 0
+    },
+    {
+      "min_kts": 36,
+      "max_kts": 37,
+      "hours": 0
+    },
+    {
+      "min_kts": 37,
+      "max_kts": 38,
+      "hours": 0
+    },
+    {
+      "min_kts": 38,
+      "max_kts": 39,
+      "hours": 0
+    },
+    {
+      "min_kts": 39,
       "max_kts": 40,
-      "hours": 5
+      "hours": 0
     },
     {
       "min_kts": 40,
+      "max_kts": 41,
+      "hours": 0
+    },
+    {
+      "min_kts": 41,
+      "max_kts": 42,
+      "hours": 0
+    },
+    {
+      "min_kts": 42,
+      "max_kts": 43,
+      "hours": 0
+    },
+    {
+      "min_kts": 43,
+      "max_kts": 44,
+      "hours": 0
+    },
+    {
+      "min_kts": 44,
       "max_kts": 45,
       "hours": 0
     },
     {
       "min_kts": 45,
-      "max_kts": 50,
+      "max_kts": 46,
       "hours": 0
     }
   ],
@@ -71,624 +252,2784 @@
     "1": [
       {
         "min_kts": 0,
+        "max_kts": 1,
+        "hours": 19
+      },
+      {
+        "min_kts": 1,
+        "max_kts": 2,
+        "hours": 115
+      },
+      {
+        "min_kts": 2,
+        "max_kts": 3,
+        "hours": 405
+      },
+      {
+        "min_kts": 3,
+        "max_kts": 4,
+        "hours": 355
+      },
+      {
+        "min_kts": 4,
         "max_kts": 5,
-        "hours": 1329
+        "hours": 13
       },
       {
         "min_kts": 5,
+        "max_kts": 6,
+        "hours": 587
+      },
+      {
+        "min_kts": 6,
+        "max_kts": 7,
+        "hours": 15
+      },
+      {
+        "min_kts": 7,
+        "max_kts": 8,
+        "hours": 611
+      },
+      {
+        "min_kts": 8,
+        "max_kts": 9,
+        "hours": 13
+      },
+      {
+        "min_kts": 9,
         "max_kts": 10,
-        "hours": 1593
+        "hours": 387
       },
       {
         "min_kts": 10,
+        "max_kts": 11,
+        "hours": 0
+      },
+      {
+        "min_kts": 11,
+        "max_kts": 12,
+        "hours": 269
+      },
+      {
+        "min_kts": 12,
+        "max_kts": 13,
+        "hours": 0
+      },
+      {
+        "min_kts": 13,
+        "max_kts": 14,
+        "hours": 205
+      },
+      {
+        "min_kts": 14,
         "max_kts": 15,
-        "hours": 646
-      },
-      {
-        "min_kts": 15,
-        "max_kts": 20,
-        "hours": 135
-      },
-      {
-        "min_kts": 20,
-        "max_kts": 25,
-        "hours": 16
-      },
-      {
-        "min_kts": 25,
-        "max_kts": 30,
         "hours": 1
       },
       {
+        "min_kts": 15,
+        "max_kts": 16,
+        "hours": 62
+      },
+      {
+        "min_kts": 16,
+        "max_kts": 17,
+        "hours": 0
+      },
+      {
+        "min_kts": 17,
+        "max_kts": 18,
+        "hours": 21
+      },
+      {
+        "min_kts": 18,
+        "max_kts": 19,
+        "hours": 0
+      },
+      {
+        "min_kts": 19,
+        "max_kts": 20,
+        "hours": 3
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 21,
+        "hours": 0
+      },
+      {
+        "min_kts": 21,
+        "max_kts": 22,
+        "hours": 0
+      },
+      {
+        "min_kts": 22,
+        "max_kts": 23,
+        "hours": 0
+      },
+      {
+        "min_kts": 23,
+        "max_kts": 24,
+        "hours": 0
+      },
+      {
+        "min_kts": 24,
+        "max_kts": 25,
+        "hours": 0
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 26,
+        "hours": 0
+      },
+      {
+        "min_kts": 26,
+        "max_kts": 27,
+        "hours": 0
+      },
+      {
+        "min_kts": 27,
+        "max_kts": 28,
+        "hours": 0
+      },
+      {
+        "min_kts": 28,
+        "max_kts": 29,
+        "hours": 0
+      },
+      {
+        "min_kts": 29,
+        "max_kts": 30,
+        "hours": 0
+      },
+      {
         "min_kts": 30,
+        "max_kts": 31,
+        "hours": 0
+      },
+      {
+        "min_kts": 31,
+        "max_kts": 32,
+        "hours": 0
+      },
+      {
+        "min_kts": 32,
+        "max_kts": 33,
+        "hours": 0
+      },
+      {
+        "min_kts": 33,
+        "max_kts": 34,
+        "hours": 0
+      },
+      {
+        "min_kts": 34,
         "max_kts": 35,
         "hours": 0
       },
       {
         "min_kts": 35,
+        "max_kts": 36,
+        "hours": 0
+      },
+      {
+        "min_kts": 36,
+        "max_kts": 37,
+        "hours": 0
+      },
+      {
+        "min_kts": 37,
+        "max_kts": 38,
+        "hours": 0
+      },
+      {
+        "min_kts": 38,
+        "max_kts": 39,
+        "hours": 0
+      },
+      {
+        "min_kts": 39,
         "max_kts": 40,
         "hours": 0
       },
       {
         "min_kts": 40,
+        "max_kts": 41,
+        "hours": 0
+      },
+      {
+        "min_kts": 41,
+        "max_kts": 42,
+        "hours": 0
+      },
+      {
+        "min_kts": 42,
+        "max_kts": 43,
+        "hours": 0
+      },
+      {
+        "min_kts": 43,
+        "max_kts": 44,
+        "hours": 0
+      },
+      {
+        "min_kts": 44,
         "max_kts": 45,
         "hours": 0
       },
       {
         "min_kts": 45,
-        "max_kts": 50,
+        "max_kts": 46,
         "hours": 0
       }
     ],
     "2": [
       {
         "min_kts": 0,
+        "max_kts": 1,
+        "hours": 36
+      },
+      {
+        "min_kts": 1,
+        "max_kts": 2,
+        "hours": 84
+      },
+      {
+        "min_kts": 2,
+        "max_kts": 3,
+        "hours": 269
+      },
+      {
+        "min_kts": 3,
+        "max_kts": 4,
+        "hours": 343
+      },
+      {
+        "min_kts": 4,
         "max_kts": 5,
-        "hours": 935
+        "hours": 0
       },
       {
         "min_kts": 5,
+        "max_kts": 6,
+        "hours": 607
+      },
+      {
+        "min_kts": 6,
+        "max_kts": 7,
+        "hours": 0
+      },
+      {
+        "min_kts": 7,
+        "max_kts": 8,
+        "hours": 519
+      },
+      {
+        "min_kts": 8,
+        "max_kts": 9,
+        "hours": 0
+      },
+      {
+        "min_kts": 9,
         "max_kts": 10,
-        "hours": 1430
+        "hours": 463
       },
       {
         "min_kts": 10,
+        "max_kts": 11,
+        "hours": 0
+      },
+      {
+        "min_kts": 11,
+        "max_kts": 12,
+        "hours": 203
+      },
+      {
+        "min_kts": 12,
+        "max_kts": 13,
+        "hours": 0
+      },
+      {
+        "min_kts": 13,
+        "max_kts": 14,
+        "hours": 117
+      },
+      {
+        "min_kts": 14,
         "max_kts": 15,
-        "hours": 752
+        "hours": 0
       },
       {
         "min_kts": 15,
+        "max_kts": 16,
+        "hours": 56
+      },
+      {
+        "min_kts": 16,
+        "max_kts": 17,
+        "hours": 0
+      },
+      {
+        "min_kts": 17,
+        "max_kts": 18,
+        "hours": 12
+      },
+      {
+        "min_kts": 18,
+        "max_kts": 19,
+        "hours": 0
+      },
+      {
+        "min_kts": 19,
         "max_kts": 20,
-        "hours": 206
-      },
-      {
-        "min_kts": 20,
-        "max_kts": 25,
-        "hours": 32
-      },
-      {
-        "min_kts": 25,
-        "max_kts": 30,
         "hours": 3
       },
       {
+        "min_kts": 20,
+        "max_kts": 21,
+        "hours": 0
+      },
+      {
+        "min_kts": 21,
+        "max_kts": 22,
+        "hours": 0
+      },
+      {
+        "min_kts": 22,
+        "max_kts": 23,
+        "hours": 0
+      },
+      {
+        "min_kts": 23,
+        "max_kts": 24,
+        "hours": 0
+      },
+      {
+        "min_kts": 24,
+        "max_kts": 25,
+        "hours": 0
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 26,
+        "hours": 0
+      },
+      {
+        "min_kts": 26,
+        "max_kts": 27,
+        "hours": 0
+      },
+      {
+        "min_kts": 27,
+        "max_kts": 28,
+        "hours": 0
+      },
+      {
+        "min_kts": 28,
+        "max_kts": 29,
+        "hours": 0
+      },
+      {
+        "min_kts": 29,
+        "max_kts": 30,
+        "hours": 0
+      },
+      {
         "min_kts": 30,
+        "max_kts": 31,
+        "hours": 0
+      },
+      {
+        "min_kts": 31,
+        "max_kts": 32,
+        "hours": 0
+      },
+      {
+        "min_kts": 32,
+        "max_kts": 33,
+        "hours": 0
+      },
+      {
+        "min_kts": 33,
+        "max_kts": 34,
+        "hours": 0
+      },
+      {
+        "min_kts": 34,
         "max_kts": 35,
         "hours": 0
       },
       {
         "min_kts": 35,
+        "max_kts": 36,
+        "hours": 0
+      },
+      {
+        "min_kts": 36,
+        "max_kts": 37,
+        "hours": 0
+      },
+      {
+        "min_kts": 37,
+        "max_kts": 38,
+        "hours": 0
+      },
+      {
+        "min_kts": 38,
+        "max_kts": 39,
+        "hours": 0
+      },
+      {
+        "min_kts": 39,
         "max_kts": 40,
         "hours": 0
       },
       {
         "min_kts": 40,
+        "max_kts": 41,
+        "hours": 0
+      },
+      {
+        "min_kts": 41,
+        "max_kts": 42,
+        "hours": 0
+      },
+      {
+        "min_kts": 42,
+        "max_kts": 43,
+        "hours": 0
+      },
+      {
+        "min_kts": 43,
+        "max_kts": 44,
+        "hours": 0
+      },
+      {
+        "min_kts": 44,
         "max_kts": 45,
         "hours": 0
       },
       {
         "min_kts": 45,
-        "max_kts": 50,
+        "max_kts": 46,
         "hours": 0
       }
     ],
     "3": [
       {
         "min_kts": 0,
+        "max_kts": 1,
+        "hours": 63
+      },
+      {
+        "min_kts": 1,
+        "max_kts": 2,
+        "hours": 197
+      },
+      {
+        "min_kts": 2,
+        "max_kts": 3,
+        "hours": 371
+      },
+      {
+        "min_kts": 3,
+        "max_kts": 4,
+        "hours": 434
+      },
+      {
+        "min_kts": 4,
         "max_kts": 5,
-        "hours": 801
+        "hours": 0
       },
       {
         "min_kts": 5,
+        "max_kts": 6,
+        "hours": 821
+      },
+      {
+        "min_kts": 6,
+        "max_kts": 7,
+        "hours": 0
+      },
+      {
+        "min_kts": 7,
+        "max_kts": 8,
+        "hours": 591
+      },
+      {
+        "min_kts": 8,
+        "max_kts": 9,
+        "hours": 0
+      },
+      {
+        "min_kts": 9,
         "max_kts": 10,
-        "hours": 1509
+        "hours": 440
       },
       {
         "min_kts": 10,
+        "max_kts": 11,
+        "hours": 0
+      },
+      {
+        "min_kts": 11,
+        "max_kts": 12,
+        "hours": 284
+      },
+      {
+        "min_kts": 12,
+        "max_kts": 13,
+        "hours": 0
+      },
+      {
+        "min_kts": 13,
+        "max_kts": 14,
+        "hours": 90
+      },
+      {
+        "min_kts": 14,
         "max_kts": 15,
-        "hours": 991
+        "hours": 0
       },
       {
         "min_kts": 15,
+        "max_kts": 16,
+        "hours": 43
+      },
+      {
+        "min_kts": 16,
+        "max_kts": 17,
+        "hours": 0
+      },
+      {
+        "min_kts": 17,
+        "max_kts": 18,
+        "hours": 10
+      },
+      {
+        "min_kts": 18,
+        "max_kts": 19,
+        "hours": 0
+      },
+      {
+        "min_kts": 19,
         "max_kts": 20,
-        "hours": 343
+        "hours": 0
       },
       {
         "min_kts": 20,
+        "max_kts": 21,
+        "hours": 0
+      },
+      {
+        "min_kts": 21,
+        "max_kts": 22,
+        "hours": 0
+      },
+      {
+        "min_kts": 22,
+        "max_kts": 23,
+        "hours": 0
+      },
+      {
+        "min_kts": 23,
+        "max_kts": 24,
+        "hours": 0
+      },
+      {
+        "min_kts": 24,
         "max_kts": 25,
-        "hours": 68
+        "hours": 0
       },
       {
         "min_kts": 25,
+        "max_kts": 26,
+        "hours": 0
+      },
+      {
+        "min_kts": 26,
+        "max_kts": 27,
+        "hours": 0
+      },
+      {
+        "min_kts": 27,
+        "max_kts": 28,
+        "hours": 0
+      },
+      {
+        "min_kts": 28,
+        "max_kts": 29,
+        "hours": 0
+      },
+      {
+        "min_kts": 29,
         "max_kts": 30,
-        "hours": 8
+        "hours": 0
       },
       {
         "min_kts": 30,
+        "max_kts": 31,
+        "hours": 0
+      },
+      {
+        "min_kts": 31,
+        "max_kts": 32,
+        "hours": 0
+      },
+      {
+        "min_kts": 32,
+        "max_kts": 33,
+        "hours": 0
+      },
+      {
+        "min_kts": 33,
+        "max_kts": 34,
+        "hours": 0
+      },
+      {
+        "min_kts": 34,
         "max_kts": 35,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 35,
+        "max_kts": 36,
+        "hours": 0
+      },
+      {
+        "min_kts": 36,
+        "max_kts": 37,
+        "hours": 0
+      },
+      {
+        "min_kts": 37,
+        "max_kts": 38,
+        "hours": 0
+      },
+      {
+        "min_kts": 38,
+        "max_kts": 39,
+        "hours": 0
+      },
+      {
+        "min_kts": 39,
         "max_kts": 40,
         "hours": 0
       },
       {
         "min_kts": 40,
+        "max_kts": 41,
+        "hours": 0
+      },
+      {
+        "min_kts": 41,
+        "max_kts": 42,
+        "hours": 0
+      },
+      {
+        "min_kts": 42,
+        "max_kts": 43,
+        "hours": 0
+      },
+      {
+        "min_kts": 43,
+        "max_kts": 44,
+        "hours": 0
+      },
+      {
+        "min_kts": 44,
         "max_kts": 45,
         "hours": 0
       },
       {
         "min_kts": 45,
-        "max_kts": 50,
+        "max_kts": 46,
         "hours": 0
       }
     ],
     "4": [
       {
         "min_kts": 0,
+        "max_kts": 1,
+        "hours": 114
+      },
+      {
+        "min_kts": 1,
+        "max_kts": 2,
+        "hours": 134
+      },
+      {
+        "min_kts": 2,
+        "max_kts": 3,
+        "hours": 257
+      },
+      {
+        "min_kts": 3,
+        "max_kts": 4,
+        "hours": 358
+      },
+      {
+        "min_kts": 4,
         "max_kts": 5,
-        "hours": 539
+        "hours": 0
       },
       {
         "min_kts": 5,
+        "max_kts": 6,
+        "hours": 752
+      },
+      {
+        "min_kts": 6,
+        "max_kts": 7,
+        "hours": 0
+      },
+      {
+        "min_kts": 7,
+        "max_kts": 8,
+        "hours": 719
+      },
+      {
+        "min_kts": 8,
+        "max_kts": 9,
+        "hours": 0
+      },
+      {
+        "min_kts": 9,
         "max_kts": 10,
-        "hours": 1180
+        "hours": 649
       },
       {
         "min_kts": 10,
+        "max_kts": 11,
+        "hours": 0
+      },
+      {
+        "min_kts": 11,
+        "max_kts": 12,
+        "hours": 400
+      },
+      {
+        "min_kts": 12,
+        "max_kts": 13,
+        "hours": 0
+      },
+      {
+        "min_kts": 13,
+        "max_kts": 14,
+        "hours": 184
+      },
+      {
+        "min_kts": 14,
         "max_kts": 15,
-        "hours": 1045
+        "hours": 0
       },
       {
         "min_kts": 15,
+        "max_kts": 16,
+        "hours": 33
+      },
+      {
+        "min_kts": 16,
+        "max_kts": 17,
+        "hours": 0
+      },
+      {
+        "min_kts": 17,
+        "max_kts": 18,
+        "hours": 0
+      },
+      {
+        "min_kts": 18,
+        "max_kts": 19,
+        "hours": 0
+      },
+      {
+        "min_kts": 19,
         "max_kts": 20,
-        "hours": 567
+        "hours": 0
       },
       {
         "min_kts": 20,
+        "max_kts": 21,
+        "hours": 0
+      },
+      {
+        "min_kts": 21,
+        "max_kts": 22,
+        "hours": 0
+      },
+      {
+        "min_kts": 22,
+        "max_kts": 23,
+        "hours": 0
+      },
+      {
+        "min_kts": 23,
+        "max_kts": 24,
+        "hours": 0
+      },
+      {
+        "min_kts": 24,
         "max_kts": 25,
-        "hours": 206
+        "hours": 0
       },
       {
         "min_kts": 25,
+        "max_kts": 26,
+        "hours": 0
+      },
+      {
+        "min_kts": 26,
+        "max_kts": 27,
+        "hours": 0
+      },
+      {
+        "min_kts": 27,
+        "max_kts": 28,
+        "hours": 0
+      },
+      {
+        "min_kts": 28,
+        "max_kts": 29,
+        "hours": 0
+      },
+      {
+        "min_kts": 29,
         "max_kts": 30,
-        "hours": 52
+        "hours": 0
       },
       {
         "min_kts": 30,
+        "max_kts": 31,
+        "hours": 0
+      },
+      {
+        "min_kts": 31,
+        "max_kts": 32,
+        "hours": 0
+      },
+      {
+        "min_kts": 32,
+        "max_kts": 33,
+        "hours": 0
+      },
+      {
+        "min_kts": 33,
+        "max_kts": 34,
+        "hours": 0
+      },
+      {
+        "min_kts": 34,
         "max_kts": 35,
-        "hours": 9
+        "hours": 0
       },
       {
         "min_kts": 35,
+        "max_kts": 36,
+        "hours": 0
+      },
+      {
+        "min_kts": 36,
+        "max_kts": 37,
+        "hours": 0
+      },
+      {
+        "min_kts": 37,
+        "max_kts": 38,
+        "hours": 0
+      },
+      {
+        "min_kts": 38,
+        "max_kts": 39,
+        "hours": 0
+      },
+      {
+        "min_kts": 39,
         "max_kts": 40,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 40,
+        "max_kts": 41,
+        "hours": 0
+      },
+      {
+        "min_kts": 41,
+        "max_kts": 42,
+        "hours": 0
+      },
+      {
+        "min_kts": 42,
+        "max_kts": 43,
+        "hours": 0
+      },
+      {
+        "min_kts": 43,
+        "max_kts": 44,
+        "hours": 0
+      },
+      {
+        "min_kts": 44,
         "max_kts": 45,
         "hours": 0
       },
       {
         "min_kts": 45,
-        "max_kts": 50,
+        "max_kts": 46,
         "hours": 0
       }
     ],
     "5": [
       {
         "min_kts": 0,
+        "max_kts": 1,
+        "hours": 140
+      },
+      {
+        "min_kts": 1,
+        "max_kts": 2,
+        "hours": 141
+      },
+      {
+        "min_kts": 2,
+        "max_kts": 3,
+        "hours": 372
+      },
+      {
+        "min_kts": 3,
+        "max_kts": 4,
+        "hours": 548
+      },
+      {
+        "min_kts": 4,
         "max_kts": 5,
-        "hours": 431
+        "hours": 0
       },
       {
         "min_kts": 5,
+        "max_kts": 6,
+        "hours": 947
+      },
+      {
+        "min_kts": 6,
+        "max_kts": 7,
+        "hours": 0
+      },
+      {
+        "min_kts": 7,
+        "max_kts": 8,
+        "hours": 789
+      },
+      {
+        "min_kts": 8,
+        "max_kts": 9,
+        "hours": 0
+      },
+      {
+        "min_kts": 9,
         "max_kts": 10,
-        "hours": 1096
+        "hours": 502
       },
       {
         "min_kts": 10,
+        "max_kts": 11,
+        "hours": 0
+      },
+      {
+        "min_kts": 11,
+        "max_kts": 12,
+        "hours": 185
+      },
+      {
+        "min_kts": 12,
+        "max_kts": 13,
+        "hours": 0
+      },
+      {
+        "min_kts": 13,
+        "max_kts": 14,
+        "hours": 85
+      },
+      {
+        "min_kts": 14,
         "max_kts": 15,
-        "hours": 1115
+        "hours": 0
       },
       {
         "min_kts": 15,
+        "max_kts": 16,
+        "hours": 10
+      },
+      {
+        "min_kts": 16,
+        "max_kts": 17,
+        "hours": 0
+      },
+      {
+        "min_kts": 17,
+        "max_kts": 18,
+        "hours": 1
+      },
+      {
+        "min_kts": 18,
+        "max_kts": 19,
+        "hours": 0
+      },
+      {
+        "min_kts": 19,
         "max_kts": 20,
-        "hours": 692
+        "hours": 0
       },
       {
         "min_kts": 20,
+        "max_kts": 21,
+        "hours": 0
+      },
+      {
+        "min_kts": 21,
+        "max_kts": 22,
+        "hours": 0
+      },
+      {
+        "min_kts": 22,
+        "max_kts": 23,
+        "hours": 0
+      },
+      {
+        "min_kts": 23,
+        "max_kts": 24,
+        "hours": 0
+      },
+      {
+        "min_kts": 24,
         "max_kts": 25,
-        "hours": 286
+        "hours": 0
       },
       {
         "min_kts": 25,
+        "max_kts": 26,
+        "hours": 0
+      },
+      {
+        "min_kts": 26,
+        "max_kts": 27,
+        "hours": 0
+      },
+      {
+        "min_kts": 27,
+        "max_kts": 28,
+        "hours": 0
+      },
+      {
+        "min_kts": 28,
+        "max_kts": 29,
+        "hours": 0
+      },
+      {
+        "min_kts": 29,
         "max_kts": 30,
-        "hours": 81
+        "hours": 0
       },
       {
         "min_kts": 30,
+        "max_kts": 31,
+        "hours": 0
+      },
+      {
+        "min_kts": 31,
+        "max_kts": 32,
+        "hours": 0
+      },
+      {
+        "min_kts": 32,
+        "max_kts": 33,
+        "hours": 0
+      },
+      {
+        "min_kts": 33,
+        "max_kts": 34,
+        "hours": 0
+      },
+      {
+        "min_kts": 34,
         "max_kts": 35,
-        "hours": 16
+        "hours": 0
       },
       {
         "min_kts": 35,
+        "max_kts": 36,
+        "hours": 0
+      },
+      {
+        "min_kts": 36,
+        "max_kts": 37,
+        "hours": 0
+      },
+      {
+        "min_kts": 37,
+        "max_kts": 38,
+        "hours": 0
+      },
+      {
+        "min_kts": 38,
+        "max_kts": 39,
+        "hours": 0
+      },
+      {
+        "min_kts": 39,
         "max_kts": 40,
-        "hours": 2
+        "hours": 0
       },
       {
         "min_kts": 40,
+        "max_kts": 41,
+        "hours": 0
+      },
+      {
+        "min_kts": 41,
+        "max_kts": 42,
+        "hours": 0
+      },
+      {
+        "min_kts": 42,
+        "max_kts": 43,
+        "hours": 0
+      },
+      {
+        "min_kts": 43,
+        "max_kts": 44,
+        "hours": 0
+      },
+      {
+        "min_kts": 44,
         "max_kts": 45,
         "hours": 0
       },
       {
         "min_kts": 45,
-        "max_kts": 50,
+        "max_kts": 46,
         "hours": 0
       }
     ],
     "6": [
       {
         "min_kts": 0,
+        "max_kts": 1,
+        "hours": 116
+      },
+      {
+        "min_kts": 1,
+        "max_kts": 2,
+        "hours": 144
+      },
+      {
+        "min_kts": 2,
+        "max_kts": 3,
+        "hours": 475
+      },
+      {
+        "min_kts": 3,
+        "max_kts": 4,
+        "hours": 628
+      },
+      {
+        "min_kts": 4,
         "max_kts": 5,
-        "hours": 495
+        "hours": 0
       },
       {
         "min_kts": 5,
+        "max_kts": 6,
+        "hours": 845
+      },
+      {
+        "min_kts": 6,
+        "max_kts": 7,
+        "hours": 0
+      },
+      {
+        "min_kts": 7,
+        "max_kts": 8,
+        "hours": 645
+      },
+      {
+        "min_kts": 8,
+        "max_kts": 9,
+        "hours": 0
+      },
+      {
+        "min_kts": 9,
         "max_kts": 10,
-        "hours": 1196
+        "hours": 370
       },
       {
         "min_kts": 10,
+        "max_kts": 11,
+        "hours": 0
+      },
+      {
+        "min_kts": 11,
+        "max_kts": 12,
+        "hours": 95
+      },
+      {
+        "min_kts": 12,
+        "max_kts": 13,
+        "hours": 0
+      },
+      {
+        "min_kts": 13,
+        "max_kts": 14,
+        "hours": 13
+      },
+      {
+        "min_kts": 14,
         "max_kts": 15,
-        "hours": 1095
+        "hours": 0
       },
       {
         "min_kts": 15,
-        "max_kts": 20,
-        "hours": 577
-      },
-      {
-        "min_kts": 20,
-        "max_kts": 25,
-        "hours": 191
-      },
-      {
-        "min_kts": 25,
-        "max_kts": 30,
-        "hours": 41
-      },
-      {
-        "min_kts": 30,
-        "max_kts": 35,
+        "max_kts": 16,
         "hours": 6
       },
       {
+        "min_kts": 16,
+        "max_kts": 17,
+        "hours": 0
+      },
+      {
+        "min_kts": 17,
+        "max_kts": 18,
+        "hours": 0
+      },
+      {
+        "min_kts": 18,
+        "max_kts": 19,
+        "hours": 0
+      },
+      {
+        "min_kts": 19,
+        "max_kts": 20,
+        "hours": 0
+      },
+      {
+        "min_kts": 20,
+        "max_kts": 21,
+        "hours": 0
+      },
+      {
+        "min_kts": 21,
+        "max_kts": 22,
+        "hours": 0
+      },
+      {
+        "min_kts": 22,
+        "max_kts": 23,
+        "hours": 0
+      },
+      {
+        "min_kts": 23,
+        "max_kts": 24,
+        "hours": 0
+      },
+      {
+        "min_kts": 24,
+        "max_kts": 25,
+        "hours": 0
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 26,
+        "hours": 0
+      },
+      {
+        "min_kts": 26,
+        "max_kts": 27,
+        "hours": 0
+      },
+      {
+        "min_kts": 27,
+        "max_kts": 28,
+        "hours": 0
+      },
+      {
+        "min_kts": 28,
+        "max_kts": 29,
+        "hours": 0
+      },
+      {
+        "min_kts": 29,
+        "max_kts": 30,
+        "hours": 0
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 31,
+        "hours": 0
+      },
+      {
+        "min_kts": 31,
+        "max_kts": 32,
+        "hours": 0
+      },
+      {
+        "min_kts": 32,
+        "max_kts": 33,
+        "hours": 0
+      },
+      {
+        "min_kts": 33,
+        "max_kts": 34,
+        "hours": 0
+      },
+      {
+        "min_kts": 34,
+        "max_kts": 35,
+        "hours": 0
+      },
+      {
         "min_kts": 35,
+        "max_kts": 36,
+        "hours": 0
+      },
+      {
+        "min_kts": 36,
+        "max_kts": 37,
+        "hours": 0
+      },
+      {
+        "min_kts": 37,
+        "max_kts": 38,
+        "hours": 0
+      },
+      {
+        "min_kts": 38,
+        "max_kts": 39,
+        "hours": 0
+      },
+      {
+        "min_kts": 39,
         "max_kts": 40,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 40,
+        "max_kts": 41,
+        "hours": 0
+      },
+      {
+        "min_kts": 41,
+        "max_kts": 42,
+        "hours": 0
+      },
+      {
+        "min_kts": 42,
+        "max_kts": 43,
+        "hours": 0
+      },
+      {
+        "min_kts": 43,
+        "max_kts": 44,
+        "hours": 0
+      },
+      {
+        "min_kts": 44,
         "max_kts": 45,
         "hours": 0
       },
       {
         "min_kts": 45,
-        "max_kts": 50,
+        "max_kts": 46,
         "hours": 0
       }
     ],
     "7": [
       {
         "min_kts": 0,
+        "max_kts": 1,
+        "hours": 66
+      },
+      {
+        "min_kts": 1,
+        "max_kts": 2,
+        "hours": 151
+      },
+      {
+        "min_kts": 2,
+        "max_kts": 3,
+        "hours": 383
+      },
+      {
+        "min_kts": 3,
+        "max_kts": 4,
+        "hours": 499
+      },
+      {
+        "min_kts": 4,
         "max_kts": 5,
-        "hours": 663
+        "hours": 0
       },
       {
         "min_kts": 5,
+        "max_kts": 6,
+        "hours": 982
+      },
+      {
+        "min_kts": 6,
+        "max_kts": 7,
+        "hours": 0
+      },
+      {
+        "min_kts": 7,
+        "max_kts": 8,
+        "hours": 816
+      },
+      {
+        "min_kts": 8,
+        "max_kts": 9,
+        "hours": 0
+      },
+      {
+        "min_kts": 9,
         "max_kts": 10,
-        "hours": 1361
+        "hours": 520
       },
       {
         "min_kts": 10,
+        "max_kts": 11,
+        "hours": 0
+      },
+      {
+        "min_kts": 11,
+        "max_kts": 12,
+        "hours": 238
+      },
+      {
+        "min_kts": 12,
+        "max_kts": 13,
+        "hours": 0
+      },
+      {
+        "min_kts": 13,
+        "max_kts": 14,
+        "hours": 59
+      },
+      {
+        "min_kts": 14,
         "max_kts": 15,
-        "hours": 1061
+        "hours": 0
       },
       {
         "min_kts": 15,
+        "max_kts": 16,
+        "hours": 6
+      },
+      {
+        "min_kts": 16,
+        "max_kts": 17,
+        "hours": 0
+      },
+      {
+        "min_kts": 17,
+        "max_kts": 18,
+        "hours": 0
+      },
+      {
+        "min_kts": 18,
+        "max_kts": 19,
+        "hours": 0
+      },
+      {
+        "min_kts": 19,
         "max_kts": 20,
-        "hours": 475
+        "hours": 0
       },
       {
         "min_kts": 20,
+        "max_kts": 21,
+        "hours": 0
+      },
+      {
+        "min_kts": 21,
+        "max_kts": 22,
+        "hours": 0
+      },
+      {
+        "min_kts": 22,
+        "max_kts": 23,
+        "hours": 0
+      },
+      {
+        "min_kts": 23,
+        "max_kts": 24,
+        "hours": 0
+      },
+      {
+        "min_kts": 24,
         "max_kts": 25,
-        "hours": 133
+        "hours": 0
       },
       {
         "min_kts": 25,
+        "max_kts": 26,
+        "hours": 0
+      },
+      {
+        "min_kts": 26,
+        "max_kts": 27,
+        "hours": 0
+      },
+      {
+        "min_kts": 27,
+        "max_kts": 28,
+        "hours": 0
+      },
+      {
+        "min_kts": 28,
+        "max_kts": 29,
+        "hours": 0
+      },
+      {
+        "min_kts": 29,
         "max_kts": 30,
-        "hours": 24
+        "hours": 0
       },
       {
         "min_kts": 30,
+        "max_kts": 31,
+        "hours": 0
+      },
+      {
+        "min_kts": 31,
+        "max_kts": 32,
+        "hours": 0
+      },
+      {
+        "min_kts": 32,
+        "max_kts": 33,
+        "hours": 0
+      },
+      {
+        "min_kts": 33,
+        "max_kts": 34,
+        "hours": 0
+      },
+      {
+        "min_kts": 34,
         "max_kts": 35,
-        "hours": 3
+        "hours": 0
       },
       {
         "min_kts": 35,
+        "max_kts": 36,
+        "hours": 0
+      },
+      {
+        "min_kts": 36,
+        "max_kts": 37,
+        "hours": 0
+      },
+      {
+        "min_kts": 37,
+        "max_kts": 38,
+        "hours": 0
+      },
+      {
+        "min_kts": 38,
+        "max_kts": 39,
+        "hours": 0
+      },
+      {
+        "min_kts": 39,
         "max_kts": 40,
         "hours": 0
       },
       {
         "min_kts": 40,
+        "max_kts": 41,
+        "hours": 0
+      },
+      {
+        "min_kts": 41,
+        "max_kts": 42,
+        "hours": 0
+      },
+      {
+        "min_kts": 42,
+        "max_kts": 43,
+        "hours": 0
+      },
+      {
+        "min_kts": 43,
+        "max_kts": 44,
+        "hours": 0
+      },
+      {
+        "min_kts": 44,
         "max_kts": 45,
         "hours": 0
       },
       {
         "min_kts": 45,
-        "max_kts": 50,
+        "max_kts": 46,
         "hours": 0
       }
     ],
     "8": [
       {
         "min_kts": 0,
+        "max_kts": 1,
+        "hours": 170
+      },
+      {
+        "min_kts": 1,
+        "max_kts": 2,
+        "hours": 184
+      },
+      {
+        "min_kts": 2,
+        "max_kts": 3,
+        "hours": 567
+      },
+      {
+        "min_kts": 3,
+        "max_kts": 4,
+        "hours": 692
+      },
+      {
+        "min_kts": 4,
         "max_kts": 5,
-        "hours": 854
+        "hours": 0
       },
       {
         "min_kts": 5,
+        "max_kts": 6,
+        "hours": 877
+      },
+      {
+        "min_kts": 6,
+        "max_kts": 7,
+        "hours": 0
+      },
+      {
+        "min_kts": 7,
+        "max_kts": 8,
+        "hours": 622
+      },
+      {
+        "min_kts": 8,
+        "max_kts": 9,
+        "hours": 0
+      },
+      {
+        "min_kts": 9,
         "max_kts": 10,
-        "hours": 1461
+        "hours": 378
       },
       {
         "min_kts": 10,
+        "max_kts": 11,
+        "hours": 0
+      },
+      {
+        "min_kts": 11,
+        "max_kts": 12,
+        "hours": 194
+      },
+      {
+        "min_kts": 12,
+        "max_kts": 13,
+        "hours": 0
+      },
+      {
+        "min_kts": 13,
+        "max_kts": 14,
+        "hours": 32
+      },
+      {
+        "min_kts": 14,
         "max_kts": 15,
-        "hours": 951
+        "hours": 0
       },
       {
         "min_kts": 15,
+        "max_kts": 16,
+        "hours": 4
+      },
+      {
+        "min_kts": 16,
+        "max_kts": 17,
+        "hours": 0
+      },
+      {
+        "min_kts": 17,
+        "max_kts": 18,
+        "hours": 0
+      },
+      {
+        "min_kts": 18,
+        "max_kts": 19,
+        "hours": 0
+      },
+      {
+        "min_kts": 19,
         "max_kts": 20,
-        "hours": 356
+        "hours": 0
       },
       {
         "min_kts": 20,
+        "max_kts": 21,
+        "hours": 0
+      },
+      {
+        "min_kts": 21,
+        "max_kts": 22,
+        "hours": 0
+      },
+      {
+        "min_kts": 22,
+        "max_kts": 23,
+        "hours": 0
+      },
+      {
+        "min_kts": 23,
+        "max_kts": 24,
+        "hours": 0
+      },
+      {
+        "min_kts": 24,
         "max_kts": 25,
-        "hours": 84
+        "hours": 0
       },
       {
         "min_kts": 25,
+        "max_kts": 26,
+        "hours": 0
+      },
+      {
+        "min_kts": 26,
+        "max_kts": 27,
+        "hours": 0
+      },
+      {
+        "min_kts": 27,
+        "max_kts": 28,
+        "hours": 0
+      },
+      {
+        "min_kts": 28,
+        "max_kts": 29,
+        "hours": 0
+      },
+      {
+        "min_kts": 29,
         "max_kts": 30,
-        "hours": 13
+        "hours": 0
       },
       {
         "min_kts": 30,
+        "max_kts": 31,
+        "hours": 0
+      },
+      {
+        "min_kts": 31,
+        "max_kts": 32,
+        "hours": 0
+      },
+      {
+        "min_kts": 32,
+        "max_kts": 33,
+        "hours": 0
+      },
+      {
+        "min_kts": 33,
+        "max_kts": 34,
+        "hours": 0
+      },
+      {
+        "min_kts": 34,
         "max_kts": 35,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 35,
+        "max_kts": 36,
+        "hours": 0
+      },
+      {
+        "min_kts": 36,
+        "max_kts": 37,
+        "hours": 0
+      },
+      {
+        "min_kts": 37,
+        "max_kts": 38,
+        "hours": 0
+      },
+      {
+        "min_kts": 38,
+        "max_kts": 39,
+        "hours": 0
+      },
+      {
+        "min_kts": 39,
         "max_kts": 40,
         "hours": 0
       },
       {
         "min_kts": 40,
+        "max_kts": 41,
+        "hours": 0
+      },
+      {
+        "min_kts": 41,
+        "max_kts": 42,
+        "hours": 0
+      },
+      {
+        "min_kts": 42,
+        "max_kts": 43,
+        "hours": 0
+      },
+      {
+        "min_kts": 43,
+        "max_kts": 44,
+        "hours": 0
+      },
+      {
+        "min_kts": 44,
         "max_kts": 45,
         "hours": 0
       },
       {
         "min_kts": 45,
-        "max_kts": 50,
+        "max_kts": 46,
         "hours": 0
       }
     ],
     "9": [
       {
         "min_kts": 0,
+        "max_kts": 1,
+        "hours": 120
+      },
+      {
+        "min_kts": 1,
+        "max_kts": 2,
+        "hours": 323
+      },
+      {
+        "min_kts": 2,
+        "max_kts": 3,
+        "hours": 561
+      },
+      {
+        "min_kts": 3,
+        "max_kts": 4,
+        "hours": 557
+      },
+      {
+        "min_kts": 4,
         "max_kts": 5,
-        "hours": 642
+        "hours": 0
       },
       {
         "min_kts": 5,
+        "max_kts": 6,
+        "hours": 871
+      },
+      {
+        "min_kts": 6,
+        "max_kts": 7,
+        "hours": 0
+      },
+      {
+        "min_kts": 7,
+        "max_kts": 8,
+        "hours": 539
+      },
+      {
+        "min_kts": 8,
+        "max_kts": 9,
+        "hours": 0
+      },
+      {
+        "min_kts": 9,
         "max_kts": 10,
-        "hours": 1317
+        "hours": 306
       },
       {
         "min_kts": 10,
+        "max_kts": 11,
+        "hours": 0
+      },
+      {
+        "min_kts": 11,
+        "max_kts": 12,
+        "hours": 196
+      },
+      {
+        "min_kts": 12,
+        "max_kts": 13,
+        "hours": 0
+      },
+      {
+        "min_kts": 13,
+        "max_kts": 14,
+        "hours": 73
+      },
+      {
+        "min_kts": 14,
         "max_kts": 15,
-        "hours": 1026
+        "hours": 0
       },
       {
         "min_kts": 15,
+        "max_kts": 16,
+        "hours": 22
+      },
+      {
+        "min_kts": 16,
+        "max_kts": 17,
+        "hours": 0
+      },
+      {
+        "min_kts": 17,
+        "max_kts": 18,
+        "hours": 22
+      },
+      {
+        "min_kts": 18,
+        "max_kts": 19,
+        "hours": 0
+      },
+      {
+        "min_kts": 19,
         "max_kts": 20,
-        "hours": 459
+        "hours": 5
       },
       {
         "min_kts": 20,
-        "max_kts": 25,
-        "hours": 129
+        "max_kts": 21,
+        "hours": 0
       },
       {
-        "min_kts": 25,
-        "max_kts": 30,
-        "hours": 24
-      },
-      {
-        "min_kts": 30,
-        "max_kts": 35,
+        "min_kts": 21,
+        "max_kts": 22,
         "hours": 3
       },
       {
+        "min_kts": 22,
+        "max_kts": 23,
+        "hours": 2
+      },
+      {
+        "min_kts": 23,
+        "max_kts": 24,
+        "hours": 0
+      },
+      {
+        "min_kts": 24,
+        "max_kts": 25,
+        "hours": 0
+      },
+      {
+        "min_kts": 25,
+        "max_kts": 26,
+        "hours": 0
+      },
+      {
+        "min_kts": 26,
+        "max_kts": 27,
+        "hours": 0
+      },
+      {
+        "min_kts": 27,
+        "max_kts": 28,
+        "hours": 0
+      },
+      {
+        "min_kts": 28,
+        "max_kts": 29,
+        "hours": 0
+      },
+      {
+        "min_kts": 29,
+        "max_kts": 30,
+        "hours": 0
+      },
+      {
+        "min_kts": 30,
+        "max_kts": 31,
+        "hours": 0
+      },
+      {
+        "min_kts": 31,
+        "max_kts": 32,
+        "hours": 0
+      },
+      {
+        "min_kts": 32,
+        "max_kts": 33,
+        "hours": 0
+      },
+      {
+        "min_kts": 33,
+        "max_kts": 34,
+        "hours": 0
+      },
+      {
+        "min_kts": 34,
+        "max_kts": 35,
+        "hours": 0
+      },
+      {
         "min_kts": 35,
+        "max_kts": 36,
+        "hours": 0
+      },
+      {
+        "min_kts": 36,
+        "max_kts": 37,
+        "hours": 0
+      },
+      {
+        "min_kts": 37,
+        "max_kts": 38,
+        "hours": 0
+      },
+      {
+        "min_kts": 38,
+        "max_kts": 39,
+        "hours": 0
+      },
+      {
+        "min_kts": 39,
         "max_kts": 40,
         "hours": 0
       },
       {
         "min_kts": 40,
+        "max_kts": 41,
+        "hours": 0
+      },
+      {
+        "min_kts": 41,
+        "max_kts": 42,
+        "hours": 0
+      },
+      {
+        "min_kts": 42,
+        "max_kts": 43,
+        "hours": 0
+      },
+      {
+        "min_kts": 43,
+        "max_kts": 44,
+        "hours": 0
+      },
+      {
+        "min_kts": 44,
         "max_kts": 45,
         "hours": 0
       },
       {
         "min_kts": 45,
-        "max_kts": 50,
+        "max_kts": 46,
         "hours": 0
       }
     ],
     "10": [
       {
         "min_kts": 0,
+        "max_kts": 1,
+        "hours": 44
+      },
+      {
+        "min_kts": 1,
+        "max_kts": 2,
+        "hours": 279
+      },
+      {
+        "min_kts": 2,
+        "max_kts": 3,
+        "hours": 649
+      },
+      {
+        "min_kts": 3,
+        "max_kts": 4,
+        "hours": 502
+      },
+      {
+        "min_kts": 4,
         "max_kts": 5,
-        "hours": 663
+        "hours": 0
       },
       {
         "min_kts": 5,
+        "max_kts": 6,
+        "hours": 809
+      },
+      {
+        "min_kts": 6,
+        "max_kts": 7,
+        "hours": 0
+      },
+      {
+        "min_kts": 7,
+        "max_kts": 8,
+        "hours": 659
+      },
+      {
+        "min_kts": 8,
+        "max_kts": 9,
+        "hours": 0
+      },
+      {
+        "min_kts": 9,
         "max_kts": 10,
-        "hours": 1361
+        "hours": 518
       },
       {
         "min_kts": 10,
+        "max_kts": 11,
+        "hours": 0
+      },
+      {
+        "min_kts": 11,
+        "max_kts": 12,
+        "hours": 198
+      },
+      {
+        "min_kts": 12,
+        "max_kts": 13,
+        "hours": 0
+      },
+      {
+        "min_kts": 13,
+        "max_kts": 14,
+        "hours": 58
+      },
+      {
+        "min_kts": 14,
         "max_kts": 15,
-        "hours": 1061
+        "hours": 0
       },
       {
         "min_kts": 15,
+        "max_kts": 16,
+        "hours": 4
+      },
+      {
+        "min_kts": 16,
+        "max_kts": 17,
+        "hours": 0
+      },
+      {
+        "min_kts": 17,
+        "max_kts": 18,
+        "hours": 0
+      },
+      {
+        "min_kts": 18,
+        "max_kts": 19,
+        "hours": 0
+      },
+      {
+        "min_kts": 19,
         "max_kts": 20,
-        "hours": 475
+        "hours": 0
       },
       {
         "min_kts": 20,
+        "max_kts": 21,
+        "hours": 0
+      },
+      {
+        "min_kts": 21,
+        "max_kts": 22,
+        "hours": 0
+      },
+      {
+        "min_kts": 22,
+        "max_kts": 23,
+        "hours": 0
+      },
+      {
+        "min_kts": 23,
+        "max_kts": 24,
+        "hours": 0
+      },
+      {
+        "min_kts": 24,
         "max_kts": 25,
-        "hours": 133
+        "hours": 0
       },
       {
         "min_kts": 25,
+        "max_kts": 26,
+        "hours": 0
+      },
+      {
+        "min_kts": 26,
+        "max_kts": 27,
+        "hours": 0
+      },
+      {
+        "min_kts": 27,
+        "max_kts": 28,
+        "hours": 0
+      },
+      {
+        "min_kts": 28,
+        "max_kts": 29,
+        "hours": 0
+      },
+      {
+        "min_kts": 29,
         "max_kts": 30,
-        "hours": 24
+        "hours": 0
       },
       {
         "min_kts": 30,
+        "max_kts": 31,
+        "hours": 0
+      },
+      {
+        "min_kts": 31,
+        "max_kts": 32,
+        "hours": 0
+      },
+      {
+        "min_kts": 32,
+        "max_kts": 33,
+        "hours": 0
+      },
+      {
+        "min_kts": 33,
+        "max_kts": 34,
+        "hours": 0
+      },
+      {
+        "min_kts": 34,
         "max_kts": 35,
-        "hours": 3
+        "hours": 0
       },
       {
         "min_kts": 35,
+        "max_kts": 36,
+        "hours": 0
+      },
+      {
+        "min_kts": 36,
+        "max_kts": 37,
+        "hours": 0
+      },
+      {
+        "min_kts": 37,
+        "max_kts": 38,
+        "hours": 0
+      },
+      {
+        "min_kts": 38,
+        "max_kts": 39,
+        "hours": 0
+      },
+      {
+        "min_kts": 39,
         "max_kts": 40,
         "hours": 0
       },
       {
         "min_kts": 40,
+        "max_kts": 41,
+        "hours": 0
+      },
+      {
+        "min_kts": 41,
+        "max_kts": 42,
+        "hours": 0
+      },
+      {
+        "min_kts": 42,
+        "max_kts": 43,
+        "hours": 0
+      },
+      {
+        "min_kts": 43,
+        "max_kts": 44,
+        "hours": 0
+      },
+      {
+        "min_kts": 44,
         "max_kts": 45,
         "hours": 0
       },
       {
         "min_kts": 45,
-        "max_kts": 50,
+        "max_kts": 46,
         "hours": 0
       }
     ],
     "11": [
       {
         "min_kts": 0,
+        "max_kts": 1,
+        "hours": 167
+      },
+      {
+        "min_kts": 1,
+        "max_kts": 2,
+        "hours": 315
+      },
+      {
+        "min_kts": 2,
+        "max_kts": 3,
+        "hours": 584
+      },
+      {
+        "min_kts": 3,
+        "max_kts": 4,
+        "hours": 482
+      },
+      {
+        "min_kts": 4,
         "max_kts": 5,
-        "hours": 1002
+        "hours": 0
       },
       {
         "min_kts": 5,
+        "max_kts": 6,
+        "hours": 765
+      },
+      {
+        "min_kts": 6,
+        "max_kts": 7,
+        "hours": 0
+      },
+      {
+        "min_kts": 7,
+        "max_kts": 8,
+        "hours": 561
+      },
+      {
+        "min_kts": 8,
+        "max_kts": 9,
+        "hours": 0
+      },
+      {
+        "min_kts": 9,
         "max_kts": 10,
-        "hours": 1532
+        "hours": 394
       },
       {
         "min_kts": 10,
-        "max_kts": 15,
-        "hours": 806
+        "max_kts": 11,
+        "hours": 0
       },
       {
-        "min_kts": 15,
-        "max_kts": 20,
+        "min_kts": 11,
+        "max_kts": 12,
         "hours": 221
       },
       {
+        "min_kts": 12,
+        "max_kts": 13,
+        "hours": 0
+      },
+      {
+        "min_kts": 13,
+        "max_kts": 14,
+        "hours": 98
+      },
+      {
+        "min_kts": 14,
+        "max_kts": 15,
+        "hours": 0
+      },
+      {
+        "min_kts": 15,
+        "max_kts": 16,
+        "hours": 13
+      },
+      {
+        "min_kts": 16,
+        "max_kts": 17,
+        "hours": 0
+      },
+      {
+        "min_kts": 17,
+        "max_kts": 18,
+        "hours": 0
+      },
+      {
+        "min_kts": 18,
+        "max_kts": 19,
+        "hours": 0
+      },
+      {
+        "min_kts": 19,
+        "max_kts": 20,
+        "hours": 0
+      },
+      {
         "min_kts": 20,
+        "max_kts": 21,
+        "hours": 0
+      },
+      {
+        "min_kts": 21,
+        "max_kts": 22,
+        "hours": 0
+      },
+      {
+        "min_kts": 22,
+        "max_kts": 23,
+        "hours": 0
+      },
+      {
+        "min_kts": 23,
+        "max_kts": 24,
+        "hours": 0
+      },
+      {
+        "min_kts": 24,
         "max_kts": 25,
-        "hours": 35
+        "hours": 0
       },
       {
         "min_kts": 25,
+        "max_kts": 26,
+        "hours": 0
+      },
+      {
+        "min_kts": 26,
+        "max_kts": 27,
+        "hours": 0
+      },
+      {
+        "min_kts": 27,
+        "max_kts": 28,
+        "hours": 0
+      },
+      {
+        "min_kts": 28,
+        "max_kts": 29,
+        "hours": 0
+      },
+      {
+        "min_kts": 29,
         "max_kts": 30,
-        "hours": 3
+        "hours": 0
       },
       {
         "min_kts": 30,
+        "max_kts": 31,
+        "hours": 0
+      },
+      {
+        "min_kts": 31,
+        "max_kts": 32,
+        "hours": 0
+      },
+      {
+        "min_kts": 32,
+        "max_kts": 33,
+        "hours": 0
+      },
+      {
+        "min_kts": 33,
+        "max_kts": 34,
+        "hours": 0
+      },
+      {
+        "min_kts": 34,
         "max_kts": 35,
         "hours": 0
       },
       {
         "min_kts": 35,
+        "max_kts": 36,
+        "hours": 0
+      },
+      {
+        "min_kts": 36,
+        "max_kts": 37,
+        "hours": 0
+      },
+      {
+        "min_kts": 37,
+        "max_kts": 38,
+        "hours": 0
+      },
+      {
+        "min_kts": 38,
+        "max_kts": 39,
+        "hours": 0
+      },
+      {
+        "min_kts": 39,
         "max_kts": 40,
         "hours": 0
       },
       {
         "min_kts": 40,
+        "max_kts": 41,
+        "hours": 0
+      },
+      {
+        "min_kts": 41,
+        "max_kts": 42,
+        "hours": 0
+      },
+      {
+        "min_kts": 42,
+        "max_kts": 43,
+        "hours": 0
+      },
+      {
+        "min_kts": 43,
+        "max_kts": 44,
+        "hours": 0
+      },
+      {
+        "min_kts": 44,
         "max_kts": 45,
         "hours": 0
       },
       {
         "min_kts": 45,
-        "max_kts": 50,
+        "max_kts": 46,
         "hours": 0
       }
     ],
     "12": [
       {
         "min_kts": 0,
+        "max_kts": 1,
+        "hours": 99
+      },
+      {
+        "min_kts": 1,
+        "max_kts": 2,
+        "hours": 234
+      },
+      {
+        "min_kts": 2,
+        "max_kts": 3,
+        "hours": 621
+      },
+      {
+        "min_kts": 3,
+        "max_kts": 4,
+        "hours": 506
+      },
+      {
+        "min_kts": 4,
         "max_kts": 5,
-        "hours": 1329
+        "hours": 0
       },
       {
         "min_kts": 5,
+        "max_kts": 6,
+        "hours": 737
+      },
+      {
+        "min_kts": 6,
+        "max_kts": 7,
+        "hours": 0
+      },
+      {
+        "min_kts": 7,
+        "max_kts": 8,
+        "hours": 614
+      },
+      {
+        "min_kts": 8,
+        "max_kts": 9,
+        "hours": 0
+      },
+      {
+        "min_kts": 9,
         "max_kts": 10,
-        "hours": 1593
+        "hours": 408
       },
       {
         "min_kts": 10,
+        "max_kts": 11,
+        "hours": 0
+      },
+      {
+        "min_kts": 11,
+        "max_kts": 12,
+        "hours": 291
+      },
+      {
+        "min_kts": 12,
+        "max_kts": 13,
+        "hours": 0
+      },
+      {
+        "min_kts": 13,
+        "max_kts": 14,
+        "hours": 159
+      },
+      {
+        "min_kts": 14,
         "max_kts": 15,
-        "hours": 646
+        "hours": 0
       },
       {
         "min_kts": 15,
+        "max_kts": 16,
+        "hours": 51
+      },
+      {
+        "min_kts": 16,
+        "max_kts": 17,
+        "hours": 0
+      },
+      {
+        "min_kts": 17,
+        "max_kts": 18,
+        "hours": 0
+      },
+      {
+        "min_kts": 18,
+        "max_kts": 19,
+        "hours": 0
+      },
+      {
+        "min_kts": 19,
         "max_kts": 20,
-        "hours": 135
+        "hours": 0
       },
       {
         "min_kts": 20,
+        "max_kts": 21,
+        "hours": 0
+      },
+      {
+        "min_kts": 21,
+        "max_kts": 22,
+        "hours": 0
+      },
+      {
+        "min_kts": 22,
+        "max_kts": 23,
+        "hours": 0
+      },
+      {
+        "min_kts": 23,
+        "max_kts": 24,
+        "hours": 0
+      },
+      {
+        "min_kts": 24,
         "max_kts": 25,
-        "hours": 16
+        "hours": 0
       },
       {
         "min_kts": 25,
+        "max_kts": 26,
+        "hours": 0
+      },
+      {
+        "min_kts": 26,
+        "max_kts": 27,
+        "hours": 0
+      },
+      {
+        "min_kts": 27,
+        "max_kts": 28,
+        "hours": 0
+      },
+      {
+        "min_kts": 28,
+        "max_kts": 29,
+        "hours": 0
+      },
+      {
+        "min_kts": 29,
         "max_kts": 30,
-        "hours": 1
+        "hours": 0
       },
       {
         "min_kts": 30,
+        "max_kts": 31,
+        "hours": 0
+      },
+      {
+        "min_kts": 31,
+        "max_kts": 32,
+        "hours": 0
+      },
+      {
+        "min_kts": 32,
+        "max_kts": 33,
+        "hours": 0
+      },
+      {
+        "min_kts": 33,
+        "max_kts": 34,
+        "hours": 0
+      },
+      {
+        "min_kts": 34,
         "max_kts": 35,
         "hours": 0
       },
       {
         "min_kts": 35,
+        "max_kts": 36,
+        "hours": 0
+      },
+      {
+        "min_kts": 36,
+        "max_kts": 37,
+        "hours": 0
+      },
+      {
+        "min_kts": 37,
+        "max_kts": 38,
+        "hours": 0
+      },
+      {
+        "min_kts": 38,
+        "max_kts": 39,
+        "hours": 0
+      },
+      {
+        "min_kts": 39,
         "max_kts": 40,
         "hours": 0
       },
       {
         "min_kts": 40,
+        "max_kts": 41,
+        "hours": 0
+      },
+      {
+        "min_kts": 41,
+        "max_kts": 42,
+        "hours": 0
+      },
+      {
+        "min_kts": 42,
+        "max_kts": 43,
+        "hours": 0
+      },
+      {
+        "min_kts": 43,
+        "max_kts": 44,
+        "hours": 0
+      },
+      {
+        "min_kts": 44,
         "max_kts": 45,
         "hours": 0
       },
       {
         "min_kts": 45,
-        "max_kts": 50,
+        "max_kts": 46,
         "hours": 0
       }
     ]

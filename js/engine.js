@@ -1,32 +1,8 @@
 /**
  * Kite Size Optimizer Engine
- * Wind data from pre-computed JSON files (Meteostat / synthetic).
- * Falls back to built-in Weibull model when JSON is not available.
+ * Wind data from pre-computed Meteostat JSON files.
  * Branded for Moerzinger.eu (www.moerzinger.eu)
  */
-
-// ============================================================
-// MATH HELPERS (Weibull fallback)
-// ============================================================
-
-function gamma(z) {
-    if (z < 0.5) return Math.PI / (Math.sin(Math.PI * z) * gamma(1 - z));
-    z -= 1;
-    const g = 7;
-    const c = [
-        0.99999999999980993, 676.5203681218851, -1259.1392167224028,
-        771.32342877765313, -176.61502916214059, 12.507343278686905,
-        -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7
-    ];
-    let x = c[0];
-    for (let i = 1; i < g + 2; i++) x += c[i] / (z + i);
-    const t = z + g + 0.5;
-    return Math.sqrt(2 * Math.PI) * Math.pow(t, z + 0.5) * Math.exp(-t) * x;
-}
-
-function weibullScale(mean, shape) { return mean / gamma(1 + 1 / shape); }
-function weibullCDF(v, shape, scale) { return v <= 0 ? 0 : 1 - Math.exp(-Math.pow(v / scale, shape)); }
-function weibullProbBetween(vMin, vMax, shape, scale) { return weibullCDF(vMax, shape, scale) - weibullCDF(vMin, shape, scale); }
 
 // ============================================================
 // SPOT DATA
@@ -42,44 +18,28 @@ const SPOTS = {
         country: '\u00d6sterreich',
         flag: '\u{1F1E6}\u{1F1F9}',
         description: 'Flachwasser-Spot am Neusiedlersee mit thermischen Winden. Saison ca. April\u2013Oktober. B\u00f6ige Bedingungen, NW- und SO-Windrichtungen dominant. Stehtiefes Wasser in Ufern\u00e4he.',
-        windParams: [
-            { k: 1.8, mean: 7 }, { k: 1.9, mean: 8 }, { k: 2.0, mean: 9 }, { k: 2.0, mean: 11 },
-            { k: 2.1, mean: 12 }, { k: 2.1, mean: 11 }, { k: 2.0, mean: 10 }, { k: 1.9, mean: 9 },
-            { k: 2.0, mean: 10 }, { k: 2.0, mean: 10 }, { k: 1.9, mean: 8 }, { k: 1.8, mean: 7 }
-        ]
+        windParams: []
     },
     tarifa: {
         name: 'Tarifa',
         country: 'Spanien',
         flag: '\u{1F1EA}\u{1F1F8}',
         description: 'Einer der windigsten Spots Europas. Levante (Ost) und Poniente (West) Winde sorgen f\u00fcr zuverl\u00e4ssigen Wind fast das ganze Jahr. Hauptsaison Mai\u2013September mit starkem, konstantem Wind.',
-        windParams: [
-            { k: 2.0, mean: 14 }, { k: 2.0, mean: 14 }, { k: 2.1, mean: 15 }, { k: 2.2, mean: 16 },
-            { k: 2.3, mean: 18 }, { k: 2.4, mean: 20 }, { k: 2.5, mean: 22 }, { k: 2.5, mean: 21 },
-            { k: 2.3, mean: 18 }, { k: 2.1, mean: 15 }, { k: 2.0, mean: 14 }, { k: 2.0, mean: 13 }
-        ]
+        windParams: []
     },
     lo_stagnone: {
         name: 'Lo Stagnone',
         country: 'Sizilien, Italien',
         flag: '\u{1F1EE}\u{1F1F9}',
         description: 'Flache Lagune mit konstantem Thermalwind. Saison April\u2013Oktober. Stehtiefes, warmes Wasser \u2013 ideal f\u00fcr Einsteiger und Fortgeschrittene. Maestrale und Scirocco als Hauptwindrichtungen.',
-        windParams: [
-            { k: 1.7, mean: 8 }, { k: 1.8, mean: 9 }, { k: 2.0, mean: 11 }, { k: 2.2, mean: 14 },
-            { k: 2.4, mean: 16 }, { k: 2.5, mean: 18 }, { k: 2.6, mean: 19 }, { k: 2.5, mean: 18 },
-            { k: 2.3, mean: 15 }, { k: 2.0, mean: 12 }, { k: 1.8, mean: 9 }, { k: 1.7, mean: 8 }
-        ]
+        windParams: []
     },
     hamata: {
         name: 'Hamata',
         country: '\u00c4gypten',
         flag: '\u{1F1EA}\u{1F1EC}',
         description: 'Premium-Spot am s\u00fcdlichen Roten Meer. Zuverl\u00e4ssiger thermischer Nordwind (Shamal) von M\u00e4rz bis November. Flachwasser-Lagune mit t\u00fcrkisem Wasser, konstante Side-Onshore-Bedingungen. Einer der windsichersten Spots weltweit.',
-        windParams: [
-            { k: 2.2, mean: 14 }, { k: 2.3, mean: 15 }, { k: 2.5, mean: 17 }, { k: 2.7, mean: 19 },
-            { k: 2.9, mean: 21 }, { k: 3.0, mean: 22 }, { k: 3.1, mean: 23 }, { k: 3.0, mean: 22 },
-            { k: 2.8, mean: 20 }, { k: 2.5, mean: 17 }, { k: 2.3, mean: 15 }, { k: 2.2, mean: 14 }
-        ]
+        windParams: []
     }
 };
 
@@ -114,8 +74,9 @@ async function preloadAllWindData() {
 }
 
 /**
- * Convert a 5-knot-bucket histogram into 1-knot bins (days per year).
- * Distributes hours uniformly within each bucket.
+ * Convert histogram buckets to 1-knot bins (days per year).
+ * For 1-knot source buckets this keeps raw aggregation.
+ * For legacy >1-knot buckets we fall back to uniform split.
  * @param {Array} buckets — [{min_kts, max_kts, hours}, ...]
  * @param {number} numYears — number of years the data spans
  * @param {number} maxKnots — max knot value for output array
@@ -126,13 +87,40 @@ function bucketsToDailyBins(buckets, numYears, maxKnots) {
     for (const b of buckets) {
         const width = b.max_kts - b.min_kts;
         if (width <= 0) continue;
-        const hoursPerKnotPerYear = (b.hours / numYears) / width;
-        const daysPerKnotPerYear = hoursPerKnotPerYear / 24;
+        const daysPerYear = (b.hours / numYears) / 24;
+
+        if (width === 1) {
+            const v = b.min_kts;
+            if (v >= 0 && v <= maxKnots) bins[v] += daysPerYear;
+            continue;
+        }
+
+        const daysPerKnotPerYear = daysPerYear / width;
         for (let v = b.min_kts; v < b.max_kts && v <= maxKnots; v++) {
-            bins[v] = daysPerKnotPerYear;
+            bins[v] += daysPerKnotPerYear;
         }
     }
     return bins;
+}
+
+function getNumYears(wd) {
+    return wd && wd.years_covered && wd.years_covered.length ? wd.years_covered.length : 5;
+}
+
+function getMonthlyBinsForMonth(wd, monthIndex, maxKnots) {
+    const monthBuckets = wd.wind_distribution_monthly[String(monthIndex + 1)];
+    return bucketsToDailyBins(monthBuckets || [], getNumYears(wd), maxKnots);
+}
+
+function hasMeteostatData(wd) {
+    return !!(wd &&
+              wd.station_id &&
+              wd.station_id !== 'synthetic' &&
+              wd.wind_distribution_monthly);
+}
+
+function spotHasRealWindData(spotKey) {
+    return hasMeteostatData(_windDataCache[spotKey]);
 }
 
 // ============================================================
@@ -189,38 +177,26 @@ function getWindRange(kiteSize, riderWeight, skillLevel, ridingStyle) {
 
 /**
  * Compute the yearly wind speed distribution for a spot.
- * Uses JSON data if loaded, otherwise falls back to Weibull model.
+ * Uses Meteostat-backed JSON monthly distributions.
  * Returns an array of { knots, daysPerYear } for each 1-knot bin from 0 to maxKnots.
  */
 function computeYearlyWindDistribution(spotKey, maxKnots) {
     if (maxKnots === undefined) maxKnots = 45;
 
-    // Try JSON data first
     const wd = _windDataCache[spotKey];
-    if (wd && wd.wind_distribution_annual) {
-        const numYears = wd.years_covered ? wd.years_covered.length : 5;
-        const bins = bucketsToDailyBins(wd.wind_distribution_annual, numYears, maxKnots);
+    if (hasMeteostatData(wd)) {
+        const bins = new Float64Array(maxKnots + 1);
+        for (let m = 0; m < 12; m++) {
+            const monthBins = getMonthlyBinsForMonth(wd, m, maxKnots);
+            for (let v = 0; v <= maxKnots; v++) bins[v] += monthBins[v];
+        }
         const distribution = [];
         for (let v = 0; v <= maxKnots; v++) {
             distribution.push({ knots: v, daysPerYear: bins[v] });
         }
         return distribution;
     }
-
-    // Weibull fallback
-    const spot = SPOTS[spotKey];
-    if (!spot) return [];
-    const distribution = [];
-    for (let v = 0; v <= maxKnots; v++) {
-        let totalDays = 0;
-        for (let m = 0; m < 12; m++) {
-            const { k, mean } = spot.windParams[m];
-            const lambda = weibullScale(mean, k);
-            totalDays += DAYS_IN_MONTH[m] * weibullProbBetween(v, v + 1, k, lambda);
-        }
-        distribution.push({ knots: v, daysPerYear: totalDays });
-    }
-    return distribution;
+    return [];
 }
 
 // ============================================================
@@ -229,7 +205,7 @@ function computeYearlyWindDistribution(spotKey, maxKnots) {
 
 /**
  * Compute how many days per year are rideable with a given set of kite sizes.
- * Uses JSON monthly data if available, otherwise Weibull fallback.
+ * Uses Meteostat-backed JSON monthly data.
  */
 function computeRideableDays(kiteSizes, riderWeight, skillLevel, ridingStyle, spotKey) {
     const spot = SPOTS[spotKey];
@@ -242,40 +218,16 @@ function computeRideableDays(kiteSizes, riderWeight, skillLevel, ridingStyle, sp
     var coverageByKnot = new Array(maxKnots + 1).fill(0);
 
     var wd = _windDataCache[spotKey];
-    var useJson = wd && wd.wind_distribution_monthly;
+    if (!hasMeteostatData(wd)) return { totalDays: 0, monthlyDays: [], coverageByKnot: [] };
 
     for (var m = 0; m < 12; m++) {
         var monthRideable = 0;
-
-        if (useJson) {
-            var numYears = wd.years_covered ? wd.years_covered.length : 5;
-            var monthBuckets = wd.wind_distribution_monthly[String(m + 1)];
-            var bins = bucketsToDailyBins(monthBuckets, numYears, maxKnots);
-            // bins[v] = days in this month with wind speed v (per year average)
-            // But this is annual-averaged monthly days; divide by 1 since bucketsToDailyBins
-            // already gives per-year values. However the annual data sums all months.
-            // For monthly: we need days in THIS month. The bucket hours are summed over
-            // numYears worth of this specific month, so days = hours / numYears / 24 per knot.
-            // bucketsToDailyBins already does this, but it gives days-per-year.
-            // For a single month, the "days per year" from that month's data IS the
-            // average days in that month, because the hours only cover that month.
-            for (var v = 0; v <= maxKnots; v++) {
-                var inRange = ranges.some(function (r) { return v >= r.min && v <= r.max; });
-                if (inRange) {
-                    monthRideable += bins[v];
-                    coverageByKnot[v] += bins[v];
-                }
-            }
-        } else {
-            var params = spot.windParams[m];
-            var lambda = weibullScale(params.mean, params.k);
-            for (var v = 0; v <= maxKnots; v++) {
-                var prob = weibullProbBetween(v, v + 1, params.k, lambda);
-                var inRange = ranges.some(function (r) { return v >= r.min && v <= r.max; });
-                if (inRange) {
-                    monthRideable += DAYS_IN_MONTH[m] * prob;
-                    coverageByKnot[v] += DAYS_IN_MONTH[m] * prob;
-                }
+        var bins = getMonthlyBinsForMonth(wd, m, maxKnots);
+        for (var v = 0; v <= maxKnots; v++) {
+            var inRange = ranges.some(function (r) { return v >= r.min && v <= r.max; });
+            if (inRange) {
+                monthRideable += bins[v];
+                coverageByKnot[v] += bins[v];
             }
         }
 
@@ -317,6 +269,8 @@ function hasValidOverlap(kiteSizes, riderWeight, skillLevel, ridingStyle) {
  * Uses brute-force search over all combinations with overlap constraint.
  */
 function optimizeKiteSizes(numKites, riderWeight, skillLevel, ridingStyle, spotKey) {
+    if (!spotHasRealWindData(spotKey)) return null;
+
     let bestCombo = null;
     let bestDays = -1;
     let bestResult = null;
@@ -330,6 +284,8 @@ function optimizeKiteSizes(numKites, riderWeight, skillLevel, ridingStyle, spotK
             bestResult = result;
         }
     }
+
+    if (!bestCombo || !bestResult) return null;
 
     return {
         kiteSizes: bestCombo,

@@ -35,8 +35,10 @@ document.addEventListener('DOMContentLoaded', function () {
     spotSelect.addEventListener('change', updateSpotDescription);
     updateSpotDescription();
 
-    // Preload wind data JSON files (non-blocking, falls back to Weibull if unavailable)
-    preloadAllWindData();
+    // Preload wind data and mark spots without Meteostat data as unavailable
+    preloadAllWindData().then(function () {
+        refreshSpotAvailability();
+    });
 
     // Optimize button
     document.getElementById('optimize-btn').addEventListener('click', runOptimization);
@@ -47,14 +49,46 @@ function updateSpotDescription() {
     const spot = SPOTS[spotKey];
     const descEl = document.getElementById('spot-description');
     if (spot && descEl) {
-        descEl.textContent = spot.flag + ' ' + spot.description;
+        if (spotHasRealWindData(spotKey)) {
+            descEl.textContent = spot.flag + ' ' + spot.description;
+        } else {
+            descEl.textContent = spot.flag + ' Keine Meteostat-Daten verfügbar. Dieser Spot kann aktuell nicht optimiert werden.';
+        }
     }
+}
+
+function refreshSpotAvailability() {
+    const spotSelect = document.getElementById('spot-select');
+    const optimizeBtn = document.getElementById('optimize-btn');
+    const options = Array.from(spotSelect.options);
+    let firstAvailable = null;
+
+    options.forEach(function (option) {
+        const spotKey = option.value;
+        const isAvailable = spotHasRealWindData(spotKey);
+        const baseLabel = option.getAttribute('data-base-label') || option.textContent;
+        option.setAttribute('data-base-label', baseLabel);
+        option.disabled = !isAvailable;
+        option.textContent = isAvailable ? baseLabel : baseLabel + ' (keine Meteostat-Daten)';
+        if (isAvailable && firstAvailable === null) firstAvailable = spotKey;
+    });
+
+    if (!spotHasRealWindData(spotSelect.value) && firstAvailable) {
+        spotSelect.value = firstAvailable;
+    }
+
+    optimizeBtn.disabled = firstAvailable === null;
+    updateSpotDescription();
 }
 
 function runOptimization() {
     const weight = parseInt(document.getElementById('weight-slider').value);
     const spotKey = document.getElementById('spot-select').value;
     const numKites = parseInt(document.getElementById('kite-count-slider').value);
+
+    if (!spotHasRealWindData(spotKey)) {
+        return;
+    }
 
     // Show loading state
     const btn = document.getElementById('optimize-btn');
@@ -65,6 +99,11 @@ function runOptimization() {
     // Small delay so UI updates before heavy computation
     setTimeout(() => {
         const result = optimizeKiteSizes(numKites, weight, DEFAULT_SKILL, DEFAULT_STYLE, spotKey);
+        if (!result) {
+            btn.textContent = originalText;
+            btn.disabled = false;
+            return;
+        }
         displayResults(result, weight, spotKey, numKites);
         btn.textContent = originalText;
         btn.disabled = false;
