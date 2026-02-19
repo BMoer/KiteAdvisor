@@ -49,11 +49,10 @@ function updateSpotDescription() {
     const spot = SPOTS[spotKey];
     const descEl = document.getElementById('spot-description');
     if (spot && descEl) {
-        if (spotHasRealWindData(spotKey)) {
-            descEl.textContent = spot.flag + ' ' + spot.description;
-        } else {
-            descEl.textContent = spot.flag + ' Keine Meteostat-Daten verfügbar. Dieser Spot kann aktuell nicht optimiert werden.';
-        }
+        const mode = getSpotDataMode(spotKey);
+        if (mode === 'meteostat') descEl.textContent = spot.flag + ' ' + spot.description;
+        if (mode === 'synthetic') descEl.textContent = spot.flag + ' ' + spot.description + ' (Modell-Daten als Fallback)';
+        if (mode === 'none') descEl.textContent = spot.flag + ' Keine verfügbaren Winddaten für diesen Spot.';
     }
 }
 
@@ -65,15 +64,18 @@ function refreshSpotAvailability() {
 
     options.forEach(function (option) {
         const spotKey = option.value;
-        const isAvailable = spotHasRealWindData(spotKey);
+        const isAvailable = spotHasUsableWindData(spotKey);
+        const mode = getSpotDataMode(spotKey);
         const baseLabel = option.getAttribute('data-base-label') || option.textContent;
         option.setAttribute('data-base-label', baseLabel);
         option.disabled = !isAvailable;
-        option.textContent = isAvailable ? baseLabel : baseLabel + ' (keine Meteostat-Daten)';
+        if (!isAvailable) option.textContent = baseLabel + ' (keine Daten)';
+        if (mode === 'meteostat') option.textContent = baseLabel;
+        if (mode === 'synthetic') option.textContent = baseLabel + ' (Modell)';
         if (isAvailable && firstAvailable === null) firstAvailable = spotKey;
     });
 
-    if (!spotHasRealWindData(spotSelect.value) && firstAvailable) {
+    if (!spotHasUsableWindData(spotSelect.value) && firstAvailable) {
         spotSelect.value = firstAvailable;
     }
 
@@ -86,7 +88,7 @@ function runOptimization() {
     const spotKey = document.getElementById('spot-select').value;
     const numKites = parseInt(document.getElementById('kite-count-slider').value);
 
-    if (!spotHasRealWindData(spotKey)) {
+    if (!spotHasUsableWindData(spotKey)) {
         return;
     }
 

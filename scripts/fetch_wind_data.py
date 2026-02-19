@@ -13,8 +13,9 @@ Usage:
 import json
 import math
 import os
+import random
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # ── Spot configuration ──────────────────────────────────────────────
 
@@ -69,11 +70,20 @@ KMH_TO_KTS = 1.852
 MAX_KNOT = 45
 DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
+SYNTHETIC_FALLBACK_SPOTS = {"podersdorf", "hamata"}
 
 
 def wind_bin_edges():
     """Return list of 1-knot bins [(0,1), (1,2), ..., (MAX_KNOT, MAX_KNOT+1)]."""
     return [(kts, kts + 1) for kts in range(0, MAX_KNOT + 1)]
+
+
+def iter_dates(start, end):
+    """Yield daily dates from start (inclusive) to end (exclusive)."""
+    current = start
+    while current < end:
+        yield current
+        current += timedelta(days=1)
 
 
 # ── Weibull helpers for synthetic mode ──────────────────────────────
@@ -110,6 +120,12 @@ def weibull_prob_between(v_min, v_max, shape, scale):
     return weibull_cdf(v_max, shape, scale) - weibull_cdf(v_min, shape, scale)
 
 
+def weibull_sample(shape, scale, rng):
+    """Sample from Weibull(k=shape, lambda=scale) in knots."""
+    u = max(1e-12, min(1 - 1e-12, rng.random()))
+    return scale * ((-math.log(1 - u)) ** (1 / shape))
+
+
 def generate_synthetic(spot):
     """Generate wind distribution JSON from Weibull parameters."""
     slug = spot["slug"]
@@ -120,11 +136,14 @@ def generate_synthetic(spot):
     print(f"\n  {label} (synthetic from Weibull model)")
 
     now = datetime.now()
-    years_covered = list(range(now.year - YEARS_BACK, now.year))
+    end = datetime(now.year, 1, 1)
+    start = datetime(end.year - YEARS_BACK, 1, 1)
+    years_covered = list(range(start.year, end.year))
     total_hours_per_year = sum(d * 24 for d in DAYS_IN_MONTH)
     total_hours = total_hours_per_year * YEARS_BACK
 
     bins = wind_bin_edges()
+    rng = random.Random(1000 + sum(ord(ch) for ch in slug))
 
     # Annual distribution: sum across all months
     wind_annual = []
@@ -157,6 +176,16 @@ def generate_synthetic(spot):
             })
         wind_monthly[str(m + 1)] = month_buckets
 
+    daylight_hourly = []
+    for day in iter_dates(start, end):
+        month_idx = day.month - 1
+        shape, mean = weibull[month_idx]
+        scale = weibull_scale(mean, shape)
+        winds = []
+        for _hour in range(7, 19):
+            winds.append(round(weibull_sample(shape, scale, rng), 1))
+        daylight_hourly.append({"date": day.strftime("%Y-%m-%d"), "winds_kts": winds})
+
     rideable = sum(b["hours"] for b in wind_annual if b["min_kts"] >= 10)
     print(f"  Total hours: {total_hours}, rideable (>=10kts): {rideable}")
 
@@ -173,6 +202,7 @@ def generate_synthetic(spot):
         "missing_pct": 0,
         "wind_distribution_annual": wind_annual,
         "wind_distribution_monthly": wind_monthly,
+        "daylight_hourly": daylight_hourly,
     }
 
 
@@ -266,6 +296,27 @@ def fetch_real(spot):
             month_buckets.append({"min_kts": lo, "max_kts": hi, "hours": count})
         wind_monthly[str(month)] = month_buckets
 
+    wind_series = data["wind_kts"]
+    daylight_map = {}
+    for ts, val in wind_series.items():
+        if val is None or (isinstance(val, float) and math.isnan(val)):
+            continue
+        hour = ts.hour
+        if hour < 7 or hour >= 19:
+            continue
+        date_key = ts.strftime("%Y-%m-%d")
+        if date_key not in daylight_map:
+            daylight_map[date_key] = [None] * 12
+        daylight_map[date_key][hour - 7] = round(float(val), 1)
+
+    daylight_hourly = []
+    for day in iter_dates(start, end):
+        date_key = day.strftime("%Y-%m-%d")
+        daylight_hourly.append({
+            "date": date_key,
+            "winds_kts": daylight_map.get(date_key, [None] * 12)
+        })
+
     rideable = sum(b["hours"] for b in wind_annual if b["min_kts"] >= 10)
     print(f"  Total wind hours: {wind_rows}, rideable (>=10kts): {rideable}")
 
@@ -282,6 +333,7 @@ def fetch_real(spot):
         "missing_pct": missing_pct,
         "wind_distribution_annual": wind_annual,
         "wind_distribution_monthly": wind_monthly,
+        "daylight_hourly": daylight_hourly,
     }
 
 
@@ -301,6 +353,14 @@ def main():
         result = generate_synthetic(spot) if synthetic else fetch_real(spot)
         if result is None:
             print(f"  SKIPPED: {spot['label']}")
+            if not synthetic and spot["slug"] in SYNTHETIC_FALLBACK_SPOTS:
+                print(f"  Falling back to synthetic for {spot['slug']}")
+                result = generate_synthetic(spot)
+                with open(out_path, "w", encoding="utf-8") as f:
+                    json.dump(result, f, indent=2, ensure_ascii=False)
+                print(f"  Written (fallback): {out_path}")
+                results.append(result)
+                continue
             if not synthetic and os.path.exists(out_path):
                 os.remove(out_path)
                 print(f"  Removed stale file: {out_path}")

@@ -43,6 +43,8 @@ const SPOTS = {
     }
 };
 
+const SYNTHETIC_ALLOWED_SPOTS = new Set(['podersdorf', 'hamata']);
+
 // ============================================================
 // JSON WIND DATA LOADER
 // ============================================================
@@ -112,15 +114,49 @@ function getMonthlyBinsForMonth(wd, monthIndex, maxKnots) {
     return bucketsToDailyBins(monthBuckets || [], getNumYears(wd), maxKnots);
 }
 
+function getDaylightHourlyRecords(wd) {
+    return (wd && Array.isArray(wd.daylight_hourly)) ? wd.daylight_hourly : [];
+}
+
 function hasMeteostatData(wd) {
     return !!(wd &&
               wd.station_id &&
               wd.station_id !== 'synthetic' &&
-              wd.wind_distribution_monthly);
+              wd.wind_distribution_monthly &&
+              Array.isArray(wd.daylight_hourly));
 }
 
-function spotHasRealWindData(spotKey) {
-    return hasMeteostatData(_windDataCache[spotKey]);
+function hasAllowedSyntheticData(spotKey, wd) {
+    return !!(wd &&
+              wd.station_id === 'synthetic' &&
+              SYNTHETIC_ALLOWED_SPOTS.has(spotKey) &&
+              wd.wind_distribution_monthly &&
+              Array.isArray(wd.daylight_hourly));
+}
+
+function getSpotDataMode(spotKey) {
+    const wd = _windDataCache[spotKey];
+    if (hasMeteostatData(wd)) return 'meteostat';
+    if (hasAllowedSyntheticData(spotKey, wd)) return 'synthetic';
+    return 'none';
+}
+
+function spotHasUsableWindData(spotKey) {
+    return getSpotDataMode(spotKey) !== 'none';
+}
+
+function isWindInAnyRange(windKts, ranges) {
+    if (windKts === null || windKts === undefined) return false;
+    return ranges.some(function (r) { return windKts >= r.min && windKts <= r.max; });
+}
+
+function hasTwoConsecutiveRideableHours(dayWinds, ranges) {
+    for (var i = 0; i < dayWinds.length - 1; i++) {
+        if (isWindInAnyRange(dayWinds[i], ranges) && isWindInAnyRange(dayWinds[i + 1], ranges)) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // ============================================================
@@ -184,7 +220,7 @@ function computeYearlyWindDistribution(spotKey, maxKnots) {
     if (maxKnots === undefined) maxKnots = 45;
 
     const wd = _windDataCache[spotKey];
-    if (hasMeteostatData(wd)) {
+    if (spotHasUsableWindData(spotKey) && wd && wd.wind_distribution_monthly) {
         const bins = new Float64Array(maxKnots + 1);
         for (let m = 0; m < 12; m++) {
             const monthBins = getMonthlyBinsForMonth(wd, m, maxKnots);
@@ -213,26 +249,36 @@ function computeRideableDays(kiteSizes, riderWeight, skillLevel, ridingStyle, sp
 
     const ranges = kiteSizes.map(function (s) { return getWindRange(s, riderWeight, skillLevel, ridingStyle); });
     var totalDays = 0;
-    var monthlyDays = [];
     var maxKnots = 45;
     var coverageByKnot = new Array(maxKnots + 1).fill(0);
 
     var wd = _windDataCache[spotKey];
-    if (!hasMeteostatData(wd)) return { totalDays: 0, monthlyDays: [], coverageByKnot: [] };
+    if (!spotHasUsableWindData(spotKey) || !wd || !wd.wind_distribution_monthly || !wd.daylight_hourly) {
+        return { totalDays: 0, monthlyDays: [], coverageByKnot: [] };
+    }
 
-    for (var m = 0; m < 12; m++) {
-        var monthRideable = 0;
-        var bins = getMonthlyBinsForMonth(wd, m, maxKnots);
-        for (var v = 0; v <= maxKnots; v++) {
-            var inRange = ranges.some(function (r) { return v >= r.min && v <= r.max; });
-            if (inRange) {
-                monthRideable += bins[v];
-                coverageByKnot[v] += bins[v];
-            }
+    var numYears = getNumYears(wd);
+    var monthlyCounts = new Array(12).fill(0);
+    var records = getDaylightHourlyRecords(wd);
+
+    for (var d = 0; d < records.length; d++) {
+        var rec = records[d];
+        if (!rec || !rec.date || !Array.isArray(rec.winds_kts)) continue;
+        var month = parseInt(rec.date.slice(5, 7), 10) - 1;
+        if (month < 0 || month > 11) continue;
+        if (hasTwoConsecutiveRideableHours(rec.winds_kts, ranges)) {
+            monthlyCounts[month] += 1;
         }
+    }
+    var monthlyDays = monthlyCounts.map(function (count) { return count / numYears; });
+    for (var m = 0; m < 12; m++) {
+        totalDays += monthlyDays[m];
+    }
 
-        monthlyDays.push(monthRideable);
-        totalDays += monthRideable;
+    var distribution = computeYearlyWindDistribution(spotKey, maxKnots);
+    for (var v = 0; v <= maxKnots; v++) {
+        var inRange = ranges.some(function (r) { return v >= r.min && v <= r.max; });
+        coverageByKnot[v] = inRange && distribution[v] ? distribution[v].daysPerYear : 0;
     }
 
     return { totalDays: totalDays, monthlyDays: monthlyDays, coverageByKnot: coverageByKnot };
@@ -269,7 +315,7 @@ function hasValidOverlap(kiteSizes, riderWeight, skillLevel, ridingStyle) {
  * Uses brute-force search over all combinations with overlap constraint.
  */
 function optimizeKiteSizes(numKites, riderWeight, skillLevel, ridingStyle, spotKey) {
-    if (!spotHasRealWindData(spotKey)) return null;
+    if (!spotHasUsableWindData(spotKey)) return null;
 
     let bestCombo = null;
     let bestDays = -1;
