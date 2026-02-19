@@ -489,6 +489,7 @@ body {
     background: var(--lu-border);
     border-radius: 4px;
     overflow: hidden;
+    max-width: 100%;
 }
 
 .mini-bar-fill {
@@ -644,8 +645,13 @@ body {
         padding: 6px 4px;
     }
 
-    .monthly-table col.col-month { width: 28%; }
+    .monthly-table col.col-month { width: 30%; }
     .monthly-table col.col-num   { width: 16%; }
     .monthly-table col.col-pct   { width: 14%; }
-    .monthly-table col.col-bar   { width: 26%; }
+    .monthly-table col.col-bar   { width: 24%; }
+
+    .monthly-table td:last-child,
+    .monthly-table th:last-child {
+        padding-right: 8px;
+    }
 }
